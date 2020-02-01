@@ -53,7 +53,8 @@
 
         <div cdkDropList [cdkDropListData]="items" class="example-list" cdkDropListSortingDisabled
           (cdkDropListDropped)="drop($event)">
-          <div class="body-part" *ngFor="let item of items" cdkDrag>{{item.name}}</div>
+          <div class="body-part" *ngFor="let item of items" cdkDrag>{{item.name}}<img [src]="item.image|safeUrl"/></div>
+
         </div>
       </div>
   </div>
