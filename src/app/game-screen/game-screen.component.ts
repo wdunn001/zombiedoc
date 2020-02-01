@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Part, partType } from '../models/part.model';
 import { ArgumentOutOfRangeError } from 'rxjs';
+import { BodyPartsService } from '../services/body-parts.service';
 
 @Component({
   selector: 'app-game-screen',
@@ -16,16 +17,6 @@ export class GameScreenComponent implements OnInit {
   basket: Part[] = [
   ];
 
-  drop(event: CdkDragDrop<Part[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-    }
-  }
 
   items: Part[] = [
     { type: partType.leg,
@@ -58,21 +49,23 @@ export class GameScreenComponent implements OnInit {
   leftArm: Part[] = [];
   rightArm: Part[] = [];
 
-  // drop(event: CdkDragDrop<string[]>) {
-  //   if (event.previousContainer === event.container) {
-  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-  //   } else {
-  //     transferArrayItem(event.previousContainer.data,
-  //                       event.container.data,
-  //                       event.previousIndex,
-  //                       event.currentIndex);
-  //   }
-  // }
   constructor(private router: Router) { }
 
   ngOnInit() {
     // this.head = [];
   }
+
+  drop(event: CdkDragDrop<Part[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+  }
+
 
   end() {
     this.router.navigate(['ending']);
