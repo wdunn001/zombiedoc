@@ -21,25 +21,25 @@
     <div class="body" fxLayout="row" fxAlign="center" fxLayoutAlign="center center">
 
 
-      <div cdkDropList [cdkDropListData]="head" class="body-part" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of head" cdkDrag><img [src]="item.image|safeUrl"/></div>
-      </div>
 
-      <div fxLayout="column">
-        <div cdkDropList [cdkDropListData]="rightArm" class="body-part" (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of rightArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
+      <div cdkDropList [cdkDropListData]="rightArm" class="body-part" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of rightArm" cdkDrag>{{item.name}}</div>
         </div>
+      <div fxLayout="column">
+          <div cdkDropList [cdkDropListData]="head" class="body-part" (cdkDropListDropped)="drop($event)">
+              <div class="example-box" *ngFor="let item of head" cdkDrag>{{item.name}}</div>
+            </div>
         <div cdkDropList [cdkDropListData]="torso" class="body-part" (cdkDropListDropped)="drop($event)">
           <div class="example-box" *ngFor="let item of torso" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
-        <div cdkDropList [cdkDropListData]="leftArm" class="body-part" (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of leftArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
-        </div>
+        <div cdkDropList [cdkDropListData]="legs" class="body-part" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of legs" cdkDrag>{{item.name}}</div>
+          </div>
       </div>
-
-      <div cdkDropList [cdkDropListData]="legs" class="body-part" (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of legs" cdkDrag><img [src]="item.image|safeUrl"/></div>
+      <div cdkDropList [cdkDropListData]="leftArm" class="body-part" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of leftArm" cdkDrag>{{item.name}}</div>
         </div>
+
 
 
 
