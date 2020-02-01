@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Part, partType } from '../models/part.model';
 import { ArgumentOutOfRangeError } from 'rxjs';
+import { BodyPartsService } from '../services/body-parts.service';
 
 @Component({
   selector: 'app-game-screen',
@@ -51,7 +52,7 @@ export class GameScreenComponent implements OnInit {
                         event.currentIndex);
     }
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router, bodypart: BodyPartsService ) { }
 
   ngOnInit() {
   }
