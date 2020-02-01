@@ -5,7 +5,6 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener }
   templateUrl: './stitch-mini-game.component.html',
   styleUrls: ['./stitch-mini-game.component.scss']
 })
-
 export class StitchMiniGameComponent implements AfterViewInit {
   tickNumber = 0;
   timer = null;
@@ -18,12 +17,18 @@ export class StitchMiniGameComponent implements AfterViewInit {
     '#             #',
     '##########    #',
     '#             #',
+    '#    ##########',
+    '#             #',
+    '##########    #',
+    '#             #',
+    '#    ##########',
+    '#            *#',
     '###############'
   ];
   parts = [
-    {x: 4, y: 2},
-    {x: 3, y: 2},
-    {x: 2, y: 2}
+    {x: 4, y: 1},
+    {x: 3, y: 1},
+    {x: 2, y: 1}
   ];
   facing = 'E';
   squareSize = 30;
@@ -50,6 +55,13 @@ export class StitchMiniGameComponent implements AfterViewInit {
       this.parts.unshift(location);
       this.parts.pop();
     }
+    if (this.isDone(location)) {
+      alert('You Won!!')
+    }
+  }
+
+  isDone(location) {
+    return this.board[location.y][location.x] === '*';
   }
 
   drawBoard(ctx) {
