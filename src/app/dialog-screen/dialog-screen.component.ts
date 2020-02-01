@@ -26,10 +26,10 @@ export class DialogScreenComponent implements OnInit {
   }
 
 
-  @HostListener('document:click', ['$event'])
-  documentClick(event: MouseEvent) {
-      this.continue();
-  }
+  // @HostListener('document:click', ['$event'])
+  // documentClick(event: MouseEvent) {
+  //     this.continue();
+  // }
 
   constructor(private router: Router, private route: ActivatedRoute) {
     if (route.snapshot.data.dialog) {
