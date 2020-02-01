@@ -20,7 +20,13 @@ const routes: Routes = [
     path: 'game',
     component: GameScreenComponent,
     data: { title: 'Game' }
-  }
+  },
+  {
+    path: '',
+    redirectTo: 'start',
+    pathMatch: 'full'
+  },
+  { path: '**', component: StartScreenComponent }
 ];
 
 @NgModule({
