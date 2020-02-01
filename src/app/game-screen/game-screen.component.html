@@ -21,21 +21,21 @@
 
 
 
-      <div cdkDropList [cdkDropListData]="rightArm" class="body-part arm right" (cdkDropListDropped)="drop($event, 'arm')">
+      <div cdkDropList [cdkDropListData]="rightArm" class="body-part arm right" (cdkDropListDropped)="drop($event, 'Arm')">
           <div class="example-box" *ngFor="let item of rightArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
       <div fxLayout="column">
-          <div cdkDropList [cdkDropListData]="head" class="body-part head" (cdkDropListDropped)="drop($event, 'head')">
+          <div cdkDropList [cdkDropListData]="head" class="body-part head" (cdkDropListDropped)="drop($event, 'Head')">
               <div class="example-box" *ngFor="let item of head" cdkDrag><img [src]="item.image|safeUrl"/></div>
             </div>
-        <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDropListDropped)="drop($event, 'torso')">
+        <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDropListDropped)="drop($event, 'Torso')">
           <div class="example-box" *ngFor="let item of torso" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
-        <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDropListDropped)="drop($event, 'legs')">
+        <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDropListDropped)="drop($event, 'Leg')">
             <div class="example-box" *ngFor="let item of legs" cdkDrag><img [src]="item.image|safeUrl"/></div>
           </div>
       </div>
-      <div cdkDropList [cdkDropListData]="leftArm" class="body-part arm left" (cdkDropListDropped)="drop($event, '')">
+      <div cdkDropList [cdkDropListData]="leftArm" class="body-part arm left" (cdkDropListDropped)="drop($event, 'Arm')">
           <div class="example-box" *ngFor="let item of leftArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
 
