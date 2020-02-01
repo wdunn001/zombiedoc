@@ -10,7 +10,8 @@ import { AngularDraggableModule } from 'angular2-draggable';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { SafeUrlPipe } from './pipe/safeUrl.pipe';
+import { SafeUrlPipe } from './services/safe-url.pipe';
+
 
 @NgModule({
   declarations: [
