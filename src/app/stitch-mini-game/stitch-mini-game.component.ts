@@ -40,7 +40,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
     targetY = this.facing === 'N' ? targetY - 1 : targetY;
     targetY = this.facing === 'S' ? targetY + 1 : targetY;
     targetX = this.facing === 'W' ? targetX - 1 : targetX;
-    targetX = this.facing === 'E' ? targetX - 1 : targetX;
+    targetX = this.facing === 'E' ? targetX + 1 : targetX;
     return {x: targetX, y: targetY};
   }
 
