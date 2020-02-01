@@ -10,13 +10,15 @@ import { AngularDraggableModule } from 'angular2-draggable';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { SafeUrlPipe } from './pipe/safeUrl.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartScreenComponent,
     DialogScreenComponent,
-    GameScreenComponent
+    GameScreenComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
