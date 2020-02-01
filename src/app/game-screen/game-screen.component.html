@@ -22,7 +22,7 @@
 
 
 
-      <div cdkDropList [cdkDropListData]="rightArm" class="body-part" (cdkDropListDropped)="drop($event)">
+      <div cdkDropList [cdkDropListData]="rightArm" class="body-part arm right" (cdkDropListDropped)="drop($event)">
           <div class="example-box" *ngFor="let item of rightArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
       <div fxLayout="column">
@@ -36,7 +36,7 @@
             <div class="example-box" *ngFor="let item of legs" cdkDrag><img [src]="item.image|safeUrl"/></div>
           </div>
       </div>
-      <div cdkDropList [cdkDropListData]="leftArm" class="body-part" (cdkDropListDropped)="drop($event)">
+      <div cdkDropList [cdkDropListData]="leftArm" class="body-part arm left" (cdkDropListDropped)="drop($event)">
           <div class="example-box" *ngFor="let item of leftArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
 

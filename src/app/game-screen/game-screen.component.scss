@@ -59,6 +59,13 @@
   width: 500px;
 }
 
+.right {
+  & img {
+    transform: scaleX(-1);
+  }
+
+}
+
 .torso {
   height: 300px;
 }
