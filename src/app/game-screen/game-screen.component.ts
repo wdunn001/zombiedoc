@@ -11,7 +11,23 @@ import { ArgumentOutOfRangeError } from 'rxjs';
 })
 export class GameScreenComponent implements OnInit {
 
-  parts: Part[] = [
+
+
+  basket: Part[] = [
+  ];
+
+  drop(event: CdkDragDrop<Part[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+  }
+
+  items: Part[] = [
     { type: partType.leg,
       image: 'https://via.placeholder.com/200x200.png?text=Part',
       name: 'left leg'
@@ -34,26 +50,28 @@ export class GameScreenComponent implements OnInit {
     },
   ];
 
+
+
   head: Part[] = [];
   torso: Part[] = [];
-  Legs: Part[] = [];
+  legs: Part[] = [];
   leftArm: Part[] = [];
   rightArm: Part[] = [];
 
-  drop(event: CdkDragDrop<Part[]>) {
-    console.log(event);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-    }
-  }
+  // drop(event: CdkDragDrop<string[]>) {
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //   } else {
+  //     transferArrayItem(event.previousContainer.data,
+  //                       event.container.data,
+  //                       event.previousIndex,
+  //                       event.currentIndex);
+  //   }
+  // }
   constructor(private router: Router) { }
 
   ngOnInit() {
+    // this.head = [];
   }
 
   end() {

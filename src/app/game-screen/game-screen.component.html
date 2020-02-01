@@ -1,50 +1,60 @@
 <div cdkDropListGroup class="game" fxLayout="row" fxLayoutAlign="start start">
 
+
+
   <div class="game-screen" fxFlex fxLayout="column" fxLayoutAlign="center center">
 
-    <!-- <div class="body" fxLayout="row" fxAlign="center" fxLayoutAlign="center start">
-      <div class="head"></div>
-      <div class="center" fxLayout="column" fxLayoutAlign="start start">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div class="legs"></div>
-    </div> -->
+
+
+    <!-- <div class="example-container">
+          <h2>Shopping basket</h2>
+
+          <div
+            cdkDropList
+            [cdkDropListData]="basket"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of basket" cdkDrag>{{item}}</div>
+          </div>
+        </div> -->
     <h2>Body</h2>
-    <div class="body" fxLayout="row" fxAlign="center" fxLayoutAlign="center center" >
+    <div class="body" fxLayout="row" fxAlign="center" fxLayoutAlign="center center">
 
 
       <div cdkDropList [cdkDropListData]="head" class="body-part" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of head" cdkDrag>{{item.name}}</div>
       </div>
-    <div fxLayout="column">
-      <div cdkDropList [cdkDropListData]="rightArm" class="body-part" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of rightArm" cdkDrag>{{item.name}}</div>
-      </div>
-      <div cdkDropList [cdkDropListData]="torso" class="body-part" (cdkDropListDropped)="drop($event)">
-          <div class="example-box"  *ngFor="let item of torso" cdkDrag>{{item.name}}</div>
+
+      <div fxLayout="column">
+        <div cdkDropList [cdkDropListData]="rightArm" class="body-part" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of rightArm" cdkDrag>{{item.name}}</div>
         </div>
-      <div cdkDropList [cdkDropListData]="leftArm" class="body-part" (cdkDropListDropped)="drop($event)">
-        <div class="example-box"  *ngFor="let item of leftArm" cdkDrag>{{item.name}}</div>
+        <div cdkDropList [cdkDropListData]="torso" class="body-part" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of torso" cdkDrag>{{item.name}}</div>
+        </div>
+        <div cdkDropList [cdkDropListData]="leftArm" class="body-part" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of leftArm" cdkDrag>{{item.name}}</div>
+        </div>
       </div>
-    </div>
+
       <div cdkDropList [cdkDropListData]="legs" class="body-part" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of legs" cdkDrag>{{item.name}}</div>
-      </div>
+          <div class="example-box" *ngFor="let item of legs" cdkDrag>{{item.name}}</div>
+        </div>
+
+
 
     </div>
 
   </div>
   <div class="parts-menu" fxFlex="20">
-    <button (click)="end()">End</button>
+    <!-- <button (click)="end()">End</button> -->
     <div class="example-container">
-      <h2>Available Parts</h2>
+        <h2>Available items</h2>
 
-      <div cdkDropList [cdkDropListData]="items" class="body-part" cdkDropListSortingDisabled
-        (cdkDropListDropped)="drop($event)">
-        <div class="body-part" *ngFor="let item of parts" cdkDrag>{{item.name}}</div>
+        <div cdkDropList [cdkDropListData]="items" class="example-list" cdkDropListSortingDisabled
+          (cdkDropListDropped)="drop($event)">
+          <div class="body-part" *ngFor="let item of items" cdkDrag>{{item.name}}</div>
+        </div>
       </div>
-    </div>
   </div>
 </div>
