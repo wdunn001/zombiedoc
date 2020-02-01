@@ -22,7 +22,7 @@ export class StartScreenComponent implements OnInit {
   }
 
   start() {
-    this.route.navigate(['dialog'] );
+    this.route.navigate(['beginning'] );
   }
 
 }

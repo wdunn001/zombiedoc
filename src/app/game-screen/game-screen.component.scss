@@ -1,12 +1,52 @@
 .parts-menu {
-  border-style: dotted;
   box-sizing: border-box;
   height: 100vh;
   overflow: auto;
+
+  background-position: center center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+
+
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+  background-image: url("https://via.placeholder.com/600x950.png?text=Parts");
 }
 
 .game-screen {
-  border-style: dotted;
   box-sizing: border-box;
   height: 100vh;
 }
+
+.body {
+  height: 950px;
+  width: 600px;
+
+  background-position: center center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+
+
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+  background-image: url("https://via.placeholder.com/600x950.png?text=Body");
+}
+div {
+  border-style: dotted;
+
+}
+

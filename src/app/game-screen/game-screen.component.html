@@ -1,9 +1,20 @@
-<div fxLayout="row" fxLayoutAlign="start start">
+<div class="game" fxLayout="row" fxLayoutAlign="start start">
 
-  <div class="game-screen" fxFlex>
-Game
+  <div class="game-screen" fxFlex fxLayout="row" fxLayoutAlign="center center">
+
+    <div class="body" fxLayout="row" fxAlign="center" fxLayoutAlign="center start">
+      <div class="head"></div>
+      <div class="center" fxLayout="column" fxLayoutAlign="start start">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="legs"></div>
+    </div>
+
+
   </div>
   <div class="parts-menu" fxFlex="20">
-Parts
+      <button (click)="end()">End</button>
   </div>
 </div>

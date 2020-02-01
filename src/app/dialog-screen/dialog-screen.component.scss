@@ -1,12 +1,14 @@
-.pdialog {
-  border-style: dotted;
+.game {
+  height: 100vh;
+}
+.dialog {
   box-sizing: border-box;
   width: 100vw;
   overflow: auto;
+  min-height: 210px;
 }
 
 .scene {
-  border-style: dotted;
   box-sizing: border-box;
-  width: 100vw;
+  height: 100vw;
 }

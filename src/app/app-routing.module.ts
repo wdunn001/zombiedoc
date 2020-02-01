@@ -12,14 +12,25 @@ const routes: Routes = [
     data: { title: 'Start' }
   },
   {
-    path: 'dialog',
+    path: 'beginning',
     component: DialogScreenComponent,
-    data: { title: 'Dialog' }
+    data: { title: 'Dialog', dialog: [
+      `Let's make a zombie!`,
+      `Ok this is exciting!`
+    ], nextScreen: 'game' }
   },
   {
     path: 'game',
     component: GameScreenComponent,
     data: { title: 'Game' }
+  },
+  {
+    path: 'ending',
+    component: DialogScreenComponent,
+    data: { title: 'Dialog', dialog: [
+      'This is a nice zombie you might say?',
+      'WROUUUNNG!'
+    ], nextScreen: 'start' }
   },
   {
     path: '',
