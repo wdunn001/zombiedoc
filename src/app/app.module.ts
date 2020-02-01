@@ -25,7 +25,6 @@ import { StitchMiniGameComponent } from './stitch-mini-game/stitch-mini-game.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularDraggableModule,
     FormsModule,
     FlexLayoutModule,
     DragDropModule
