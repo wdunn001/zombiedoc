@@ -17,26 +17,25 @@
             <div class="example-box" *ngFor="let item of basket" cdkDrag>{{item}}</div>
           </div>
         </div> -->
-    <h2>Body</h2>
     <div class="body" fxLayout="row" fxAlign="center" fxLayoutAlign="center center">
 
 
 
-      <div cdkDropList [cdkDropListData]="rightArm" class="body-part arm right" (cdkDropListDropped)="drop($event)">
+      <div cdkDropList [cdkDropListData]="rightArm" class="body-part arm right" (cdkDropListDropped)="drop($event, 'arm')">
           <div class="example-box" *ngFor="let item of rightArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
       <div fxLayout="column">
-          <div cdkDropList [cdkDropListData]="head" class="body-part" (cdkDropListDropped)="drop($event)">
+          <div cdkDropList [cdkDropListData]="head" class="body-part head" (cdkDropListDropped)="drop($event, 'head')">
               <div class="example-box" *ngFor="let item of head" cdkDrag><img [src]="item.image|safeUrl"/></div>
             </div>
-        <div cdkDropList [cdkDropListData]="torso" class="body-part" (cdkDropListDropped)="drop($event)">
+        <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDropListDropped)="drop($event, 'torso')">
           <div class="example-box" *ngFor="let item of torso" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
-        <div cdkDropList [cdkDropListData]="legs" class="body-part" (cdkDropListDropped)="drop($event)">
+        <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDropListDropped)="drop($event, 'legs')">
             <div class="example-box" *ngFor="let item of legs" cdkDrag><img [src]="item.image|safeUrl"/></div>
           </div>
       </div>
-      <div cdkDropList [cdkDropListData]="leftArm" class="body-part arm left" (cdkDropListDropped)="drop($event)">
+      <div cdkDropList [cdkDropListData]="leftArm" class="body-part arm left" (cdkDropListDropped)="drop($event, '')">
           <div class="example-box" *ngFor="let item of leftArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
 
@@ -48,10 +47,8 @@
   </div>
   <div class="parts-menu" fxFlex="20">
     <!-- <button (click)="end()">End</button> -->
-    <div class="example-container">
-        <h2>Available items</h2>
-
-        <div cdkDropList [cdkDropListData]="items" class="example-list" cdkDropListSortingDisabled
+    <div fxLayout="column" fxLayoutAlign="start center">
+        <div cdkDropList [cdkDropListData]="items" class="parts-list" cdkDropListSortingDisabled
           (cdkDropListDropped)="drop($event)">
           <div class="body-part" *ngFor="let item of items" cdkDrag>{{item.name}}<img [src]="item.image|safeUrl"/></div>
 

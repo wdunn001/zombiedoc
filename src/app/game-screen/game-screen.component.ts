@@ -56,6 +56,8 @@ export class GameScreenComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Part[]>) {
+    console.log(event);
+
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -64,6 +66,16 @@ export class GameScreenComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+    if (event.container.data.length > 1) {
+      console.log(event.container.data);
+
+      transferArrayItem(
+              event.container.data,
+              this.items,
+              1,
+              event.previousIndex);
+
+          }
   }
 
 
