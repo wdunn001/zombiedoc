@@ -49,10 +49,10 @@ export class GameScreenComponent implements OnInit {
   leftArm: Part[] = [];
   rightArm: Part[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public bodypart: BodyPartsService) { }
 
   ngOnInit() {
-    // this.head = [];
+    this.items = this.bodypart.parts;
   }
 
   drop(event: CdkDragDrop<Part[]>) {
