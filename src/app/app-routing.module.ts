@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import { DialogScreenComponent } from './dialog-screen/dialog-screen.component';
 import { GameScreenComponent } from './game-screen/game-screen.component';
+import { StitchMiniGameComponent } from './stitch-mini-game/stitch-mini-game.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: 'game',
     component: GameScreenComponent,
     data: { title: 'Game' }
+  },
+  {
+    path: 'stich',
+    component: StitchMiniGameComponent,
+    data: { title: 'Stich' }
   },
   {
     path: 'ending',
