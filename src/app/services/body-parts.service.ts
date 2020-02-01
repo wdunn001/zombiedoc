@@ -12,7 +12,7 @@ export class BodyPartsService {
       name: 'left leg'
     },
     { type: partType.arm,
-      image: 'https://via.placeholder.com/200x200.png?text=Part',
+      image: 'assets/body/arm/left_arm_1.jpg',
       name: 'left arm'
     },
     { type: partType.arm,
