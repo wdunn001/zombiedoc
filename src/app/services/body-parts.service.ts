@@ -48,7 +48,7 @@ export class BodyPartsService {
       name: 'head_01'
     },
     { type: partType.head,
-      image: 'assets/body/head/head_02.jpg',
+      image: 'assets/body/head/head_02.png',
       name: 'head_02'
     },
     { type: partType.head,
