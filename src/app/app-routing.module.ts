@@ -7,6 +7,14 @@ import { GameScreenComponent } from './game-screen/game-screen.component';
 
 const routes: Routes = [
   {
+    path: 'intro',
+    component: DialogScreenComponent,
+    data: { title: 'Intro', dialog: [
+      `this is intro dialog`,
+      `isnt this so cool dont mind my typos`
+    ], nextScreen: 'start' }
+  },
+  {
     path: 'start',
     component: StartScreenComponent,
     data: { title: 'Start' }
@@ -34,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'start',
+    redirectTo: 'intro',
     pathMatch: 'full'
   },
   { path: '**', component: StartScreenComponent }
