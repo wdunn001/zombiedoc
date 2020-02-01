@@ -7,7 +7,6 @@ import { StartScreenComponent } from './start-screen/start-screen.component';
 import { DialogScreenComponent } from './dialog-screen/dialog-screen.component';
 import { GameScreenComponent } from './game-screen/game-screen.component';
 import { AngularDraggableModule } from 'angular2-draggable';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularDraggableModule,
-    FlexLayoutModule
+    AngularDraggableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
