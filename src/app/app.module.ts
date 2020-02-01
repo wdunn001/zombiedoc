@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SafeUrlPipe } from './services/safe-url.pipe';
+import { StitchMiniGameComponent } from './stitch-mini-game/stitch-mini-game.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SafeUrlPipe } from './services/safe-url.pipe';
     StartScreenComponent,
     DialogScreenComponent,
     GameScreenComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    StitchMiniGameComponent
   ],
   imports: [
     BrowserModule,
