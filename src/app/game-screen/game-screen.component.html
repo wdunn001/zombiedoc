@@ -16,23 +16,21 @@
 
 
       <div cdkDropList [cdkDropListData]="head" class="body-part" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngIf="head" cdkDrag>{{head.name}}</div>
+        <div class="example-box" *ngFor="let item of head" cdkDrag>{{item.name}}</div>
       </div>
     <div fxLayout="column">
       <div cdkDropList [cdkDropListData]="rightArm" class="body-part" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of leftArm" cdkDrag>{{leftArm.name}}</div>
+        <div class="example-box" *ngFor="let item of rightArm" cdkDrag>{{item.name}}</div>
       </div>
-      <div cdkDropList [cdkDropListData]="leftArm" class="body-part" (cdkDropListDropped)="drop($event)">
-          <div class="example-box"  *ngFor="let item of torso" cdkDrag>{{torso.name}}</div>
-        </div>
       <div cdkDropList [cdkDropListData]="torso" class="body-part" (cdkDropListDropped)="drop($event)">
-        <div class="example-box"  *ngFor="let item of rightArm" cdkDrag>{{rightArm.name}}</div>
+          <div class="example-box"  *ngFor="let item of torso" cdkDrag>{{item.name}}</div>
+        </div>
+      <div cdkDropList [cdkDropListData]="leftArm" class="body-part" (cdkDropListDropped)="drop($event)">
+        <div class="example-box"  *ngFor="let item of leftArm" cdkDrag>{{item.name}}</div>
       </div>
-
-
     </div>
       <div cdkDropList [cdkDropListData]="legs" class="body-part" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngIf="legs" cdkDrag>{{legs.name}}</div>
+        <div class="example-box" *ngFor="let item of legs" cdkDrag>{{item.name}}</div>
       </div>
 
     </div>
