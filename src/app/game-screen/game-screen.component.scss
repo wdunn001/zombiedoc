@@ -48,15 +48,21 @@
 
 
 }
-
+.game > div {
+  border: inset;
+  box-sizing: border-box;
+  }
 
 .body-part {
-  height: 200px;
   width: 200px;
 }
 
+.head {
+  height: 200px;
+}
+
 .arm {
-  width: 500px;
+  height: 450px;
 }
 
 .right {
@@ -71,5 +77,5 @@
 }
 
 .legs {
-height: 450
+height: 405px;
 }
