@@ -1,3 +1,7 @@
 .backdrop {
   background-color: #000;
+  height: 100vh;
+  & > * {
+    color: #FFF
+  }
 }
