@@ -53,8 +53,8 @@ const routes: Routes = [
     data: { title: 'Dialog',
     image: 'assets/backgrounds/couplepicture.jpg',
      dialog: [
-      'This is a nice zombie you might say?',
-      'WROUUUNNG!'
+      'Aww honey! She has your father’s eyes!',
+      'I’m so glad we saved those when we ate him!'
     ], nextScreen: 'start' }
   },
   {
