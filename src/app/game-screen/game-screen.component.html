@@ -30,10 +30,10 @@
           <div cdkDropList [cdkDropListData]="head" class="body-part head" (cdkDropListDropped)="drop($event, 'Head')">
               <div class="example-box" *ngFor="let item of head" cdkDrag><img [src]="item.image|safeUrl"/></div>
             </div>
-        <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDropListDropped)="drop($event, 'Torso')">
+        <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDropListDropped)="stichAndDrop($event, 'Torso')">
           <div class="example-box" *ngFor="let item of torso" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
-        <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDropListDropped)="drop($event, 'Leg')">
+        <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDropListDropped)="stichAndDrop($event, 'Leg')">
             <div class="example-box" *ngFor="let item of legs" cdkDrag><img [src]="item.image|safeUrl"/></div>
           </div>
       </div>
@@ -54,6 +54,7 @@
   <div class="parts-menu" fxFlex="20">
 
     <button (click)="componentInsideModal.open()">Howdy</button>
+    <!-- <button (click)="end()">End</button> -->
     <div fxLayout="column" fxLayoutAlign="start center">
         <div cdkDropList [cdkDropListData]="items" class="parts-list" cdkDropListSortingDisabled
           (cdkDropListDropped)="drop($event)">
@@ -66,9 +67,9 @@
 
 
 <modal #componentInsideModal>
-  <ng-template #modalHeader><h2>Component inside modal</h2></ng-template>
+  <ng-template #modalHeader><h2>Stich 'em Together</h2></ng-template>
   <ng-template #modalBody>
-    <app-stitch-mini-game>	</app-stitch-mini-game>
+    <app-stitch-mini-game (complete)="closeModal()">	</app-stitch-mini-game>
   </ng-template>
-  <ng-template #modalFooter></ng-template>
+  <ng-template #modalFooter>Movement (WASD)</ng-template>
 </modal>
