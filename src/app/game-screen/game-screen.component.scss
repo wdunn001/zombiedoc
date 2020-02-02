@@ -4,21 +4,21 @@
   height: 100vh;
   overflow: auto;
 
-  background-position: center center;
+  // background-position: center center;
 
-  /* Background image doesn't tile */
-  background-repeat: no-repeat;
+  // /* Background image doesn't tile */
+  // background-repeat: no-repeat;
 
 
 
-  /* This is what makes the background image rescale based
-     on the container's size */
-  background-size: cover;
+  // /* This is what makes the background image rescale based
+  //    on the container's size */
+  // background-size: cover;
 
-  /* Set a background color that will be displayed
-     while the background image is loading */
-  background-color: #464646;
-  background-image: url("https://via.placeholder.com/600x950.png?text=Parts");
+  // /* Set a background color that will be displayed
+  //    while the background image is loading */
+  // background-color: #464646;
+  // background-image: url("https://via.placeholder.com/600x950.png?text=Parts");
 }
 
 .game-screen {
@@ -47,15 +47,15 @@
 
 
 }
-.game > div {
-  border: inset;
-  box-sizing: border-box;
-  }
+// .game > div {
+//   border: inset;
+//   box-sizing: border-box;
+//   }
 
 .body-part {
   width: 200px;
-  border: solid 1px;
-  box-sizing: border-box;
+  // border: solid 1px;
+  // box-sizing: border-box;
 }
 
 .head {

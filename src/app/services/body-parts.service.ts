@@ -64,51 +64,51 @@ export class BodyPartsService {
       name: 'Pin Head'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Hole.png',
+      image: 'assets/body/torso/Hole.png',
       name: 'Hole'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Sweater.png',
+      image: 'assets/body/torso/Sweater.png',
       name: 'Sweater'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Zombie_Body_H_01.png',
+      image: 'assets/body/torso/Zombie_Body_H_01.png',
       name: 'Zombie_Body_H_01'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Zombie_Body_H_02.png',
+      image: 'assets/body/torso/Zombie_Body_H_02.png',
       name: 'Zombie_Body_H_02'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Zombie_Body_hand_crowd.png',
+      image: 'assets/body/torso/Zombie_Body_hand_crowd.png',
       name: 'Zombie_Body_hand_crowd'
     },
     { type: partType.leg,
-      image: 'assets/body/head/Cowboy.png',
+      image: 'assets/body/leg/Cowboy.png',
       name: 'Cowboy'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Shorts.png',
+      image: 'assets/body/leg/Shorts.png',
       name: 'Shorts'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Zombie_Leg_plant.png',
+      image: 'assets/body/leg/Zombie_Leg_plant.png',
       name: 'Plant Legs'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Zombie_Legs_H_01.png',
+      image: 'assets/body/leg/Zombie_Legs_H_01.png',
       name: 'Pants'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Zombie_Legs_H_02.png',
+      image: 'assets/body/leg/Zombie_Legs_H_02.png',
       name: 'Leg Missing'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Zombie_Legs_H_03.png',
+      image: 'assets/body/leg/Zombie_Legs_H_03.png',
       name: 'Squid Legs'
     },
     { type: partType.torso,
-      image: 'assets/body/head/Zombie_Legs_noodle.png',
+      image: 'assets/body/leg/Zombie_Legs_noodle.png',
       name: 'Squid Legs'
     }
   ];
