@@ -30,10 +30,10 @@
           <div cdkDropList [cdkDropListData]="head" class="body-part head" (cdkDropListDropped)="stichAndDrop($event, 'Head')">
               <div class="example-box" *ngFor="let item of head" cdkDrag><img [src]="item.image|safeUrl"/></div>
             </div>
-        <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDropListDropped)="stichAndDrop($event, 'Torso')">
+        <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDragEntered)="playAudio()" (cdkDropListDropped)="stichAndDrop($event, 'Torso')">
           <div class="example-box" *ngFor="let item of torso" cdkDrag><img [src]="item.image|safeUrl"/></div>
         </div>
-        <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDropListDropped)="stichAndDrop($event, 'Leg')">
+        <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDragEntered)="playAudio()" (cdkDropListDropped)="stichAndDrop($event, 'Leg')">
             <div class="example-box" *ngFor="let item of legs" cdkDrag><img [src]="item.image|safeUrl"/></div>
           </div>
       </div>
@@ -54,8 +54,8 @@
   <div class="parts-menu" fxFlex="20">
     <!-- <button (click)="end()">End</button> -->
     <div fxLayout="column" fxLayoutAlign="start center">
-        <div cdkDropList [cdkDropListData]="items" class="parts-list" cdkDropListSortingDisabled
-          (cdkDropListDropped)="drop($event)">
+        <div cdkDropList [cdkDropListData]="items" (cdkDragEntered)="playAudio()" class="parts-list" cdkDropListSortingDisabled
+          (cdkDropListDropped)="drop($event, 'bin')">
           <div class="body-part" *ngFor="let item of items" cdkDrag>{{item.name}}<img [src]="item.image|safeUrl"/></div>
 
         </div>

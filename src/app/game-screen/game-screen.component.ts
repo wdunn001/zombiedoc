@@ -18,7 +18,13 @@ export class GameScreenComponent implements OnInit {
 
   basket: Part[] = [
   ];
-
+  playAudio(){
+    console.log('yes this did happen')
+    let audio = new Audio();
+    audio.src = "assets/audio/grabSound.wav";
+    audio.load();
+    audio.play();
+  }
 
   items: Part[] = [
     { type: partType.leg,
@@ -55,10 +61,29 @@ export class GameScreenComponent implements OnInit {
   constructor(private router: Router, public bodypart: BodyPartsService) { }
 
   ngOnInit() {
-    this.items = this.bodypart.parts;
+    this.items = this.shuffle(this.bodypart.parts);
+
+  }
+
+  shuffle(parts: Part[]) {
+    const array: Part[] = parts;
+    array.sort(() => {
+      return .5 - Math.random();
+    });
+    return array;
   }
 
   drop(event: CdkDragDrop<Part[]>, partNeededString: string) {
+    if(partNeededString === 'bin') {
+      if (event.previousContainer === event.container) {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      } else {
+        transferArrayItem(event.previousContainer.data,
+                          event.container.data,
+                          event.previousIndex,
+                          event.currentIndex);
+      }
+    } else {
     let partNeeded: partType = partType[partNeededString];
     if (partNeededString === event.previousContainer.data[event.previousIndex].type) {
 
@@ -82,6 +107,7 @@ export class GameScreenComponent implements OnInit {
 
           }
         }
+      }
   }
 
   closeModal() {
