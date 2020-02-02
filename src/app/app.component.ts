@@ -31,5 +31,38 @@ export class AppComponent implements OnDestroy {
 
     default:
       break;
+  }
+  switch (currentRoute) {
+    case '/intro':
+    {
+      console.log('background set');
+      this.backgroundClass = 'intro-background';
+    }
+      break;
+
+    default:
+      break;
+  }
+  switch (currentRoute) {
+    case '/start':
+    {
+      console.log('background set');
+      this.backgroundClass = 'start-background';
+    }
+      break;
+
+    default:
+      break;
+  }
+  switch (currentRoute) {
+    case '/dialog':
+    {
+      console.log('background set');
+      this.backgroundClass = 'dialog-background';
+    }
+      break;
+
+    default:
+      break;
   }}
 }

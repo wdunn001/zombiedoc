@@ -15,6 +15,47 @@
   /* Set a background color that will be displayed
      while the background image is loading */
   background-color: #464646;
-  background-image: url("https://via.placeholder.com/1920x1080.png?text=Background+Image");
+  background-image: url("~/assets/backgrounds/coolbackground.jpg");
   border: none !important;
+}
+.dialog-background {
+  background-position: center center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+  /* Background image is fixed in the viewport so that it doesn't move when
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+  background-image: url("~/assets/backgrounds/otherbackground.png");
+  border: none !important;
+}
+.start-background {
+  background-position: center center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+  /* Background image is fixed in the viewport so that it doesn't move when
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+  background-image: url("~/assets/backgrounds/zombiebackground.jpg");
+  border: none !important;
+  height:100vh;
 }
