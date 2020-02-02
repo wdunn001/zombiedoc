@@ -61,8 +61,16 @@ export class GameScreenComponent implements OnInit {
   constructor(private router: Router, public bodypart: BodyPartsService) { }
 
   ngOnInit() {
-    this.items = this.bodypart.parts;
+    this.items = this.shuffle(this.bodypart.parts);
 
+  }
+
+  shuffle(parts: Part[]) {
+    const array: Part[] = parts;
+    array.sort(() => {
+      return .5 - Math.random();
+    });
+    return array;
   }
 
   drop(event: CdkDragDrop<Part[]>, partNeededString: string) {
