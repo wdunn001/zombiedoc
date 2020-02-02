@@ -8,24 +8,23 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener, 
 export class StitchMiniGameComponent implements AfterViewInit {
 
   @Output() complete: EventEmitter<void> = new EventEmitter<void>();
-
   tickNumber = 0;
   timer = null;
   board = [
     '#######################',
     '#                     #',
-    '#     *               #',
-    '#              *      #',
     '#                     #',
     '#                     #',
-    '#      *              #',
     '#                     #',
     '#                     #',
-    '#                *    #',
-    '#      *              #',
     '#                     #',
     '#                     #',
-    '#            *        #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
     '#######################'
   ];
   parts = [
@@ -33,11 +32,22 @@ export class StitchMiniGameComponent implements AfterViewInit {
     {x: 3, y: 1},
     {x: 2, y: 1}
   ];
-  stichCount = 6;
+  stichCount: number;
 
   facing = 'E';
   squareSize = 30;
   @ViewChild('canvas', {static: false}) canvas: ElementRef<HTMLCanvasElement>;
+
+  generateBoard() {
+    this.stichCount = Math.floor(Math.random() * 10);
+    for (let step = 0; step < this.stichCount; step++) {
+      let x = Math.floor(Math.random() * 19) + 1;
+      let y = Math.floor(Math.random() * 12) + 1;
+      let temp = this.board[y];
+      temp = temp.substr(0, x) + '*' + temp.substr(x + 1);
+      this.board[y] = temp;
+    }
+  }
 
   isEmpty(location) {
     const currentCharacter = this.board[location.y][location.x];
@@ -141,6 +151,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
 
 
   ngAfterViewInit() {
+    this.generateBoard();
     this.tick();
   }
 
