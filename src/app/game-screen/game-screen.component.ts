@@ -118,7 +118,9 @@ export class GameScreenComponent implements OnInit {
   }
 
   stichAndDrop(event: CdkDragDrop<Part[]>, partNeededString: string) {
-    this.modal.open();
+    if (partNeededString === event.previousContainer.data[event.previousIndex].type) {
+      this.modal.open();
+    }
     this.bodyDrop = event;
     this.bodyType = partNeededString;
   }
