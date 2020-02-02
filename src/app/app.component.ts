@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -8,6 +8,14 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
+
+  @ViewChild('tearSound', {static: true}) tearSound: ElementRef<HTMLAudioElement>;
+
+    @HostListener('window:keyup', ['$event'])
+    keyEvent(event: KeyboardEvent) {
+      this.playAudio();
+    }
+
   subscriptions: Subscription[];
   url: string;
   backgroundClass = 'background';
@@ -19,7 +27,12 @@ export class AppComponent implements OnDestroy {
   title = 'zombiedoc';
   ngOnDestroy() { this.subscriptions.map(s => s.unsubscribe()); }
 
-
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "assets/audio/tearSound.wav";
+    audio.load();
+    audio.play();
+  }
   setbackground(currentRoute) {
     switch (currentRoute) {
       case '/game': {

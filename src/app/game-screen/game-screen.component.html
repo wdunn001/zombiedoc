@@ -1,6 +1,6 @@
 <div cdkDropListGroup class="game" fxLayout="row" fxLayoutAlign="start start">
 
-
+  <button (click)="end()">Finished</button>
 
   <div class="game-screen" fxFlex fxLayout="column" fxLayoutAlign="center center">
 
@@ -52,6 +52,8 @@
 
   </div>
   <div class="parts-menu" fxFlex="20">
+
+    <button (click)="componentInsideModal.open()">Howdy</button>
     <!-- <button (click)="end()">End</button> -->
     <div fxLayout="column" fxLayoutAlign="start center">
         <div cdkDropList [cdkDropListData]="items" class="parts-list" cdkDropListSortingDisabled
