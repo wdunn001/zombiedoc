@@ -33,19 +33,20 @@ export class StitchMiniGameComponent implements AfterViewInit {
     {x: 2, y: 1}
   ];
   stichCount = 6;
-
   facing = 'E';
   squareSize = 30;
+  img = new Image(this.squareSize, this.squareSize);
+
   @ViewChild('canvas', {static: false}) canvas: ElementRef<HTMLCanvasElement>;
 
   isEmpty(location) {
     const currentCharacter = this.board[location.y][location.x];
-    if (currentCharacter === ' ') {
+    if (currentCharacter === ' ' || currentCharacter === 'O') {
       return true;
     } else if (currentCharacter === '*') {
       this.stichCount--;
       let temp = this.board[location.y];
-      temp = temp.substr(0, location.x) + ' ' + temp.substr(location.x + 1);
+      temp = temp.substr(0, location.x) + 'O' + temp.substr(location.x + 1);
       this.board[location.y] = temp;
     }
   }
@@ -82,9 +83,8 @@ export class StitchMiniGameComponent implements AfterViewInit {
       const lineArr = line.split('');
       let currentXoffset = 0;
       lineArr.forEach( character=> {
-        if (character === '*') {
-          ctx.fillStyle = 'red';
-          ctx.fillRect(currentXoffset, currentYoffset, this.squareSize, this.squareSize);
+        if (character === '*' || character === 'O') {
+          ctx.drawImage(this.img, currentXoffset, currentYoffset, 30, 30);
         }
         currentXoffset += this.squareSize;
         });
@@ -132,7 +132,9 @@ export class StitchMiniGameComponent implements AfterViewInit {
     this.timer = setTimeout( () => this.tick(), 100);
   }
 
-  constructor() { }
+  constructor() {
+    this.img.src = 'assets/backgrounds/hole.png';
+  }
 
   ngAfterViewInit() {
     this.tick();

@@ -110,11 +110,16 @@ export class GameScreenComponent implements OnInit {
       }
   }
 
-  closeModal() {
+  closeModalAndDrop() {
     this.modal.close();
     this.drop(this.bodyDrop, this.bodyType);
     this.bodyType = null;
     this.bodyDrop = null;
+  }
+
+  closeModal() {
+    this.modal.close();
+    this.end();
   }
 
   isAdjacentPiecePresent(bodyType: string) {
@@ -132,6 +137,10 @@ export class GameScreenComponent implements OnInit {
 
   isCorrectPart(event: CdkDragDrop<Part[]>, partNeededString: string) {
     return partNeededString === event.previousContainer.data[event.previousIndex].type;
+  }
+
+  stichIt() {
+    this.modal.open();
   }
 
   stichAndDrop(event: CdkDragDrop<Part[]>, partNeededString: string) {
