@@ -15,10 +15,6 @@
      on the container's size */
   background-size: cover;
 
-  /* Set a background color that will be displayed
-     while the background image is loading */
-  background-color: #464646;
-  background-image: url("https://via.placeholder.com/600x950.png?text=Parts");
 }
 
 .game-screen {
@@ -66,7 +62,7 @@
   height: 450px;
 }
 
-.right {
+.left {
   & img {
     transform: scaleX(-1);
   }

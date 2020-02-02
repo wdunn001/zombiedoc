@@ -44,7 +44,9 @@ const routes: Routes = [
   {
     path: 'ending',
     component: DialogScreenComponent,
-    data: { title: 'Dialog', dialog: [
+    data: { title: 'Dialog',
+    image: 'assets/backgrounds/couplepicture.jpg',
+     dialog: [
       'This is a nice zombie you might say?',
       'WROUUUNNG!'
     ], nextScreen: 'start' }
