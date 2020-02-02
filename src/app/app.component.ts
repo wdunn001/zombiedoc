@@ -28,10 +28,12 @@ export class AppComponent implements OnDestroy {
   ngOnDestroy() { this.subscriptions.map(s => s.unsubscribe()); }
 
   playAudio(){
+    if (this.url !== '/intro') {
     let audio = new Audio();
     audio.src = "assets/audio/tearSound.wav";
     audio.load();
     audio.play();
+    }
   }
   setbackground(currentRoute) {
     switch (currentRoute) {
