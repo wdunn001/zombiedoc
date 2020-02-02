@@ -13,7 +13,7 @@ export class AppComponent implements OnDestroy {
   backgroundClass = 'background';
   constructor(private router: Router) {
     this.subscriptions = [
-      this.router.events.subscribe( r => {if( r['url'] !=null) {this.url = r['url']; this.setbackground(r['url']);}})];
+      this.router.events.subscribe(r => { if (r['url'] != null) { this.url = r['url']; this.setbackground(r['url']); } })];
 
   }
   title = 'zombiedoc';
@@ -21,15 +21,38 @@ export class AppComponent implements OnDestroy {
 
 
   setbackground(currentRoute) {
-  switch (currentRoute) {
-    case '/game':
-    {
-      console.log('background set');
-      this.backgroundClass = 'game-background';
-    }
-      break;
+    switch (currentRoute) {
+      case '/game': {
+          console.log('background set');
+          this.backgroundClass = 'game-background';
 
-    default:
-      break;
+          break;
+        }
+      case '/dialog': {
+          console.log('background set');
+          this.backgroundClass = 'dialog-background';
+
+          break;
+        }
+      case '/intro': {
+          console.log('background set');
+          this.backgroundClass = 'intro-background';
+
+          break;
+        }
+      case '/start': {
+          console.log('background set');
+          this.backgroundClass = 'start-background';
+
+          break;
+        }
+
+      default:
+        {
+          this.backgroundClass = 'background';
+
+          break;
+        }
+
+    }
   }}
-}

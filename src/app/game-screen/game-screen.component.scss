@@ -27,7 +27,7 @@
 }
 
 .body {
-  height: 950px;
+  height: 900px;
   width: 600px;
 
   background-position: center center;
@@ -43,8 +43,7 @@
 
   /* Set a background color that will be displayed
      while the background image is loading */
-  background-color: #464646;
-  background-image: url("https://via.placeholder.com/600x950.png?text=Body");
+
 
 
 }
@@ -55,6 +54,8 @@
 
 .body-part {
   width: 200px;
+  border: solid 1px;
+  box-sizing: border-box;
 }
 
 .head {

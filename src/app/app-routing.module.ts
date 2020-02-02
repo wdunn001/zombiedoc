@@ -23,10 +23,13 @@ const routes: Routes = [
   {
     path: 'beginning',
     component: DialogScreenComponent,
-    data: { title: 'Dialog', dialog: [
+    data: { title: 'Dialog',
+     image: 'assets/backgrounds/zombiebackground.jpg',
+      dialog: [
       `Let's make a zombie!`,
       `Ok this is exciting!`
-    ], nextScreen: 'game' }
+    ], nextScreen: 'game'
+   }
   },
   {
     path: 'game',
