@@ -74,6 +74,16 @@ export class GameScreenComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Part[]>, partNeededString: string) {
+    if(partNeededString === 'bin') {
+      if (event.previousContainer === event.container) {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      } else {
+        transferArrayItem(event.previousContainer.data,
+                          event.container.data,
+                          event.previousIndex,
+                          event.currentIndex);
+      }
+    } else {
     let partNeeded: partType = partType[partNeededString];
     if (partNeededString === event.previousContainer.data[event.previousIndex].type) {
 
@@ -97,6 +107,7 @@ export class GameScreenComponent implements OnInit {
 
           }
         }
+      }
   }
 
   closeModal() {
