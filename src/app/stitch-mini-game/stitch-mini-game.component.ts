@@ -129,7 +129,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
     this.tickNumber++;
     this.move();
     this.drawGame();
-    this.timer = setTimeout( () => this.tick(), 100);
+    this.timer = setTimeout( () => this.tick(), 300);
   }
 
   constructor() {
