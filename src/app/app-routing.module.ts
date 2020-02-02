@@ -4,12 +4,13 @@ import { StartScreenComponent } from './start-screen/start-screen.component';
 import { DialogScreenComponent } from './dialog-screen/dialog-screen.component';
 import { GameScreenComponent } from './game-screen/game-screen.component';
 import { StitchMiniGameComponent } from './stitch-mini-game/stitch-mini-game.component';
+import { IntroComponent } from './intro/intro.component';
 
 
 const routes: Routes = [
   {
     path: 'intro',
-    component: DialogScreenComponent,
+    component: IntroComponent,
     data: { title: 'Intro', dialog: [
       `this is intro dialog`,
       `isnt this so cool dont mind my typos`
@@ -24,7 +25,7 @@ const routes: Routes = [
     path: 'beginning',
     component: DialogScreenComponent,
     data: { title: 'Dialog',
-     image: 'assets/backgrounds/zombiebackground.jpg',
+     image: 'assets/backgrounds/LuckyCouple.jpg',
       dialog: [
       `Let's make a zombie!`,
       `Ok this is exciting!`
@@ -45,8 +46,14 @@ const routes: Routes = [
     path: 'ending',
     component: DialogScreenComponent,
     data: { title: 'Dialog',
+<<<<<<< HEAD
     image: 'assets/backgrounds/couplepicture.jpg',
      dialog: [
+=======
+    image: 'assets/backgrounds/LuckyCouple.jpg',
+
+    dialog: [
+>>>>>>> bb45d116abf5a86d791392971ba8154d86322c81
       'This is a nice zombie you might say?',
       'WROUUUNNG!'
     ], nextScreen: 'start' }

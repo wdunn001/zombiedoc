@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SafeUrlPipe } from './services/safe-url.pipe';
 import { StitchMiniGameComponent } from './stitch-mini-game/stitch-mini-game.component';
+import { IntroComponent } from './intro/intro.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { StitchMiniGameComponent } from './stitch-mini-game/stitch-mini-game.com
     DialogScreenComponent,
     GameScreenComponent,
     SafeUrlPipe,
-    StitchMiniGameComponent
+    StitchMiniGameComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,
