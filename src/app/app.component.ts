@@ -63,6 +63,9 @@ export class AppComponent implements OnDestroy {
       break;
 
     default:
+      {
+        this.backgroundClass = 'background';
+      }
       break;
   }}
 }
