@@ -87,27 +87,27 @@ export class BodyPartsService {
       image: 'assets/body/leg/Cowboy.png',
       name: 'Cowboy'
     },
-    { type: partType.torso,
+    { type: partType.leg,
       image: 'assets/body/leg/Shorts.png',
       name: 'Shorts'
     },
-    { type: partType.torso,
+    { type: partType.leg,
       image: 'assets/body/leg/Zombie_Leg_plant.png',
       name: 'Plant Legs'
     },
-    { type: partType.torso,
+    { type: partType.leg,
       image: 'assets/body/leg/Zombie_Legs_H_01.png',
       name: 'Pants'
     },
-    { type: partType.torso,
+    { type: partType.leg,
       image: 'assets/body/leg/Zombie_Legs_H_02.png',
       name: 'Leg Missing'
     },
-    { type: partType.torso,
+    { type: partType.leg,
       image: 'assets/body/leg/Zombie_Legs_H_03.png',
       name: 'Squid Legs'
     },
-    { type: partType.torso,
+    { type: partType.leg,
       image: 'assets/body/leg/Zombie_Legs_noodle.png',
       name: 'Squid Legs'
     }
