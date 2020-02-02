@@ -19,15 +19,17 @@ export class AppComponent implements OnDestroy {
   subscriptions: Subscription[];
   url: string;
   backgroundClass = 'background';
+
   constructor(private router: Router) {
     this.subscriptions = [
       this.router.events.subscribe(r => { if (r['url'] != null) { this.url = r['url']; this.setbackground(r['url']); } })];
 
   }
   title = 'zombiedoc';
+
   ngOnDestroy() { this.subscriptions.map(s => s.unsubscribe()); }
 
-  playAudio(){
+  playAudio() {
     if (this.url !== '/intro') {
     let audio = new Audio();
     audio.src = "assets/audio/tearSound.wav";

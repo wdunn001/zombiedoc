@@ -21,6 +21,7 @@ export class DialogScreenComponent implements OnInit {
 
   dialogIndex = 0;
 
+  @HostListener('touchstart', ['$event'])
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     this.continue();
