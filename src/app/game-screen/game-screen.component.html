@@ -43,7 +43,7 @@
     <div fxLayout="column" fxLayoutAlign="start center">
         <div cdkDropList [cdkDropListData]="items" (cdkDragEntered)="playAudio()" class="parts-list" cdkDropListSortingDisabled
           (cdkDropListDropped)="drop($event, 'bin')">
-          <div class="body-part" *ngFor="let item of items" cdkDrag>{{item.name}}<img [src]="item.image|safeUrl"/></div>
+          <div class="body-part" *ngFor="let item of items" cdkDrag><img [src]="item.image|safeUrl"/></div>
 
         </div>
       </div>

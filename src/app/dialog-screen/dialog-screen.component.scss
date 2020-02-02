@@ -6,6 +6,7 @@
   width: 100vw;
   overflow: auto;
   min-height: 210px;
+  background-color: #000;
 }
 
 .scene {
@@ -38,4 +39,9 @@
     background-image: url("~/assets/backgrounds/zombiebackground.jpg");
     border: none !important;
     height:100vh;
+
+
+  }
+  span {
+    color: #FFF;
   }
