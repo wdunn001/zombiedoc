@@ -56,10 +56,7 @@ export class GameScreenComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Part[]>, partNeededString: string) {
-    console.log(event);
     let partNeeded: partType = partType[partNeededString];
-    console.log(partNeededString);
-    console.log(event.previousContainer.data);
     if (partNeededString === event.previousContainer.data[event.previousIndex].type) {
 
 
