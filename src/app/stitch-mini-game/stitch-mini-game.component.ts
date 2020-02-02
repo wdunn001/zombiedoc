@@ -8,37 +8,57 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener, 
 export class StitchMiniGameComponent implements AfterViewInit {
 
   @Output() complete: EventEmitter<void> = new EventEmitter<void>();
-
   tickNumber = 0;
   timer = null;
   board = [
-    '###############',
-    '#             #',
-    '##########    #',
-    '#             #',
-    '#    ##########',
-    '#             #',
-    '##########    #',
-    '#             #',
-    '#    ##########',
-    '#             #',
-    '##########    #',
-    '#             #',
-    '#    ##########',
-    '#            *#',
-    '###############'
+    '#######################',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#                     #',
+    '#######################'
   ];
   parts = [
     {x: 4, y: 1},
     {x: 3, y: 1},
     {x: 2, y: 1}
   ];
+  stichCount: number;
+
   facing = 'E';
   squareSize = 30;
   @ViewChild('canvas', {static: false}) canvas: ElementRef<HTMLCanvasElement>;
 
+  generateBoard() {
+    this.stichCount = Math.floor(Math.random() * 10);
+    for (let step = 0; step < this.stichCount; step++) {
+      let x = Math.floor(Math.random() * 19) + 1;
+      let y = Math.floor(Math.random() * 12) + 1;
+      let temp = this.board[y];
+      temp = temp.substr(0, x) + '*' + temp.substr(x + 1);
+      this.board[y] = temp;
+    }
+  }
+
   isEmpty(location) {
-    return this.board[location.y][location.x] === ' ';
+    const currentCharacter = this.board[location.y][location.x];
+    if (currentCharacter === ' ') {
+      return true;
+    } else if (currentCharacter === '*') {
+      this.stichCount--;
+      let temp = this.board[location.y];
+      temp = temp.substr(0, location.x) + ' ' + temp.substr(location.x + 1);
+      this.board[location.y] = temp;
+    }
   }
 
   nextLocation() {
@@ -64,7 +84,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
   }
 
   isDone(location) {
-    return this.board[location.y][location.x] === '*';
+    return this.stichCount === 0;
   }
 
   drawBoard(ctx) {
@@ -75,6 +95,10 @@ export class StitchMiniGameComponent implements AfterViewInit {
       lineArr.forEach( character=> {
         if (character === '#') {
           ctx.fillStyle = 'black';
+          ctx.fillRect(currentXoffset, currentYoffset, this.squareSize, this.squareSize);
+        }
+        if (character === '*') {
+          ctx.fillStyle = 'red';
           ctx.fillRect(currentXoffset, currentYoffset, this.squareSize, this.squareSize);
         }
         currentXoffset += this.squareSize;
@@ -127,6 +151,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
 
 
   ngAfterViewInit() {
+    this.generateBoard();
     this.tick();
   }
 
