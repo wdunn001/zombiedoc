@@ -63,6 +63,12 @@ export class AppComponent implements OnDestroy {
 
           break;
         }
+        case '/reveal': {
+          console.log('background set');
+          this.backgroundClass = 'reveal-background';
+
+          break;
+        }
 
       default:
         {

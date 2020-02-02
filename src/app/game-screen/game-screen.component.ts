@@ -156,6 +156,11 @@ export class GameScreenComponent implements OnInit {
   }
 
   end() {
+     this.bodypart.head = this.head;
+     this.bodypart.leftArm = this.leftArm;
+     this.bodypart.rightArm = this.rightArm;
+     this.bodypart.torso = this.torso;
+     this.bodypart.legs = this.legs;
     this.router.navigate(['ending']);
   }
 

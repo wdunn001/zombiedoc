@@ -56,7 +56,7 @@ const routes: Routes = [
      dialog: [
       'Aww honey! She has your father’s eyes!',
       'I’m so glad we saved those when we ate him!'
-    ], nextScreen: 'start' }
+    ], nextScreen: 'reveal' }
   },
   {
     path: 'reveal',

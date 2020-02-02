@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BodyPartsService } from '../services/body-parts.service';
 
 @Component({
   selector: 'app-reveal',
@@ -33,7 +34,7 @@ export class RevealComponent implements OnInit {
   //     this.continue();
   // }
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, public bodyParts: BodyPartsService ) {
     if (route.snapshot.data.dialog) {
       this.dialog = route.snapshot.data.dialog;
       this.init();

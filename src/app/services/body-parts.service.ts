@@ -6,6 +6,12 @@ import { Part, partType } from '../models/part.model';
 })
 export class BodyPartsService {
 
+  head: Part[] = [];
+  torso: Part[] = [];
+  legs: Part[] = [];
+  leftArm: Part[] = [];
+  rightArm: Part[] = [];
+
   parts: Part[] = [
     { type: partType.arm,
       image: 'assets/body/arm/Snake.png',

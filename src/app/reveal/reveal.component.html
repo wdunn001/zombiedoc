@@ -1,4 +1,36 @@
 <div class="backdrop" fxLayout="row" fxLayoutAlign="center center">
-  <h4>{{dialog[dialogIndex]}}</h4>
 
+  <div class="body" fxLayout="row" fxAlign="center" fxLayoutAlign="center start">
+
+
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <div class="body-part head"></div>
+      <div class="body-part arm right">
+        <div class="example-box" *ngFor="let item of bodyParts.rightArm" ><img [src]="item.image|safeUrl" />
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <div cclass="body-part head">
+        <div class="example-box" *ngFor="let item of bodyParts.head" ><img [src]="item.image|safeUrl" /></div>
+      </div>
+      <div class="body-part torso">
+        <div class="example-box" *ngFor="let item of bodyParts.torso" ><img [src]="item.image|safeUrl" /></div>
+      </div>
+      <div class="body-part legs">
+        <div class="example-box" *ngFor="let item of bodyParts.legs" ><img [src]="item.image|safeUrl" /></div>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <div class="body-part head"></div>
+      <div class="body-part arm left">
+        <div class="example-box" *ngFor="let item of bodyParts.leftArm" ><img [src]="item.image|safeUrl" /></div>
+      </div>
+    </div>
+
+
+
+
+  </div>
 </div>
