@@ -46,7 +46,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
     } else if (currentCharacter === '*') {
       this.stichCount--;
       let temp = this.board[location.y];
-      temp = temp.substr(0, location.x) + 'O' + temp.substr(location.x + 1);
+      temp = temp.substr(0, location.x) + ' ' + temp.substr(location.x + 1);
       this.board[location.y] = temp;
     }
   }
