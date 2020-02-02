@@ -1,6 +1,6 @@
 <div cdkDropListGroup class="game" fxLayout="row" fxLayoutAlign="start start">
 
-  <button (click)="stichIt()">Finished</button>
+  <button (click)="stichIt()">Finish</button>
 
   <div class="game-screen" fxFlex fxLayout="column" fxLayoutAlign="center center">
 
@@ -52,7 +52,7 @@
 
 
 <modal #componentInsideModal>
-  <ng-template #modalHeader><h2>Stich 'em Together</h2></ng-template>
+  <ng-template #modalHeader><img src="assets/backgrounds/stich.png"></ng-template>
   <ng-template #modalBody>
     <app-stitch-mini-game (complete)="closeModal()">	</app-stitch-mini-game>
   </ng-template>
