@@ -12,8 +12,10 @@ const routes: Routes = [
     path: 'intro',
     component: IntroComponent,
     data: { title: 'Intro', dialog: [
-      `this is intro dialog`,
-      `isnt this so cool dont mind my typos`
+      'The dead roam the earth.'
+      ,'Humanity is nearing extinction. They are losing the fight.'
+      , 'And now, their last hope at survival is extinguished'
+      , 'As the dead find a way to multiply their numbers…'
     ], nextScreen: 'start' }
   },
   {
@@ -27,8 +29,11 @@ const routes: Routes = [
     data: { title: 'Dialog',
      image: 'assets/backgrounds/LuckyCouple.jpg',
       dialog: [
-      `Let's make a zombie!`,
-      `Ok this is exciting!`
+        'Hey doc! Thanks for making our dream come true!'
+        , 'We can’t afford the best body parts in town,'
+        , 'but as long as our sweet angel helps bring about the destruction of the human race,'
+        , 'we’re not picky!'
+        , 'Surprise us!'
     ], nextScreen: 'game'
    }
   },
