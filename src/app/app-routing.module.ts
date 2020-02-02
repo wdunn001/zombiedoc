@@ -64,8 +64,6 @@ const routes: Routes = [
     data: { title: 'Reveal',
     image: 'assets/backgrounds/Birth_Announcement.jpg',
      dialog: [
-      'Aww honey! She has your father’s eyes!',
-      'I’m so glad we saved those when we ate him!'
     ], nextScreen: 'start' }
   },
   {
