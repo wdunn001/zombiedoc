@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Part, partType } from '../models/part.model';
 import { ArgumentOutOfRangeError } from 'rxjs';
 import { BodyPartsService } from '../services/body-parts.service';
+import { ModalComponent } from 'angular-custom-modal';
 
 @Component({
   selector: 'app-game-screen',
@@ -12,7 +13,8 @@ import { BodyPartsService } from '../services/body-parts.service';
 })
 export class GameScreenComponent implements OnInit {
 
-
+  bodyDrop: CdkDragDrop<Part[]>;
+  bodyType: string;
 
   basket: Part[] = [
   ];
@@ -48,6 +50,7 @@ export class GameScreenComponent implements OnInit {
   legs: Part[] = [];
   leftArm: Part[] = [];
   rightArm: Part[] = [];
+  @ViewChild(ModalComponent, {static: false}) modal: ModalComponent;
 
   constructor(private router: Router, public bodypart: BodyPartsService) { }
 
@@ -84,6 +87,18 @@ export class GameScreenComponent implements OnInit {
         }
   }
 
+  closeModal() {
+    this.modal.close();
+    this.drop(this.bodyDrop, this.bodyType);
+    this.bodyType = null;
+    this.bodyDrop = null;
+  }
+
+  stichAndDrop(event: CdkDragDrop<Part[]>, partNeededString: string) {
+    this.modal.open();
+    this.bodyDrop = event;
+    this.bodyType = partNeededString;
+  }
 
   end() {
     this.router.navigate(['ending']);

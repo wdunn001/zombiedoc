@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-stitch-mini-game',
@@ -6,6 +6,9 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener }
   styleUrls: ['./stitch-mini-game.component.scss']
 })
 export class StitchMiniGameComponent implements AfterViewInit {
+
+  @Output() complete: EventEmitter<void> = new EventEmitter<void>();
+
   tickNumber = 0;
   timer = null;
   board = [
@@ -56,7 +59,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
       this.parts.pop();
     }
     if (this.isDone(location)) {
-      alert('You Won!!')
+      this.complete.emit();
     }
   }
 
@@ -124,7 +127,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
 
 
   ngAfterViewInit() {
-    this.tick()
+    this.tick();
   }
 
 
