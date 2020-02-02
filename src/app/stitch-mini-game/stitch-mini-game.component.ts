@@ -5,7 +5,6 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener }
   templateUrl: './stitch-mini-game.component.html',
   styleUrls: ['./stitch-mini-game.component.scss']
 })
-
 export class StitchMiniGameComponent implements AfterViewInit {
   tickNumber = 0;
   timer = null;

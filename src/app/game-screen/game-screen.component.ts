@@ -55,8 +55,13 @@ export class GameScreenComponent implements OnInit {
     this.items = this.bodypart.parts;
   }
 
-  drop(event: CdkDragDrop<Part[]>) {
+  drop(event: CdkDragDrop<Part[]>, partNeededString: string) {
     console.log(event);
+    let partNeeded: partType = partType[partNeededString];
+    console.log(partNeededString);
+    console.log(event.previousContainer.data);
+    if (partNeededString === event.previousContainer.data[event.previousIndex].type) {
+
 
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -76,6 +81,7 @@ export class GameScreenComponent implements OnInit {
               event.previousIndex);
 
           }
+        }
   }
 
 
