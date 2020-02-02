@@ -91,12 +91,33 @@ export class GameScreenComponent implements OnInit {
     this.bodyDrop = null;
   }
 
-  stichAndDrop(event: CdkDragDrop<Part[]>, partNeededString: string) {
-    if (partNeededString === event.previousContainer.data[event.previousIndex].type) {
-      this.modal.open();
+  isAdjacentPiecePresent(bodyType: string) {
+    if (bodyType === 'Torso'){
+      if (this.head.length > 0 || this.leftArm.length > 0 || this.rightArm.length > 0 || this.legs.length > 0) {
+        return true;
+      }
+    } else {
+      if (this.torso.length > 0){
+        return true;
+      }
     }
-    this.bodyDrop = event;
-    this.bodyType = partNeededString;
+    return false;
+  }
+
+  isCorrectPart(event: CdkDragDrop<Part[]>, partNeededString: string) {
+    return partNeededString === event.previousContainer.data[event.previousIndex].type;
+  }
+
+  stichAndDrop(event: CdkDragDrop<Part[]>, partNeededString: string) {
+    if (this.isCorrectPart(event, partNeededString)) {
+      if (this.isAdjacentPiecePresent(event.previousContainer.data[event.previousIndex].type)) {
+        this.bodyDrop = event;
+        this.bodyType = partNeededString;
+        this.modal.open();
+      } else {
+        this.drop(event, partNeededString);
+      }
+    }
   }
 
   end() {
