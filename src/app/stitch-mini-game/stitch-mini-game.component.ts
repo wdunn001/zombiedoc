@@ -12,33 +12,43 @@ export class StitchMiniGameComponent implements AfterViewInit {
   tickNumber = 0;
   timer = null;
   board = [
-    '###############',
-    '#             #',
-    '##########    #',
-    '#             #',
-    '#    ##########',
-    '#             #',
-    '##########    #',
-    '#             #',
-    '#    ##########',
-    '#             #',
-    '##########    #',
-    '#             #',
-    '#    ##########',
-    '#            *#',
-    '###############'
+    '#######################',
+    '#                     #',
+    '#     *               #',
+    '#              *      #',
+    '#                     #',
+    '#                     #',
+    '#      *              #',
+    '#                     #',
+    '#                     #',
+    '#                *    #',
+    '#      *              #',
+    '#                     #',
+    '#                     #',
+    '#            *        #',
+    '#######################'
   ];
   parts = [
     {x: 4, y: 1},
     {x: 3, y: 1},
     {x: 2, y: 1}
   ];
+  stichCount = 6;
+
   facing = 'E';
   squareSize = 30;
   @ViewChild('canvas', {static: false}) canvas: ElementRef<HTMLCanvasElement>;
 
   isEmpty(location) {
-    return this.board[location.y][location.x] === ' ';
+    const currentCharacter = this.board[location.y][location.x];
+    if (currentCharacter === ' ') {
+      return true;
+    } else if (currentCharacter === '*') {
+      this.stichCount--;
+      let temp = this.board[location.y];
+      temp = temp.substr(0, location.x) + ' ' + temp.substr(location.x + 1);
+      this.board[location.y] = temp;
+    }
   }
 
   nextLocation() {
@@ -64,7 +74,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
   }
 
   isDone(location) {
-    return this.board[location.y][location.x] === '*';
+    return this.stichCount === 0;
   }
 
   drawBoard(ctx) {
@@ -75,6 +85,10 @@ export class StitchMiniGameComponent implements AfterViewInit {
       lineArr.forEach( character=> {
         if (character === '#') {
           ctx.fillStyle = 'black';
+          ctx.fillRect(currentXoffset, currentYoffset, this.squareSize, this.squareSize);
+        }
+        if (character === '*') {
+          ctx.fillStyle = 'red';
           ctx.fillRect(currentXoffset, currentYoffset, this.squareSize, this.squareSize);
         }
         currentXoffset += this.squareSize;
