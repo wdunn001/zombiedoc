@@ -13,7 +13,7 @@ export class AppComponent implements OnDestroy {
   backgroundClass = 'background';
   constructor(private router: Router) {
     this.subscriptions = [
-      this.router.events.subscribe( r => {if( r['url'] !=null) {this.url = r['url']; this.setbackground(r['url']);}})];
+      this.router.events.subscribe(r => { if (r['url'] != null) { this.url = r['url']; this.setbackground(r['url']); } })];
 
   }
   title = 'zombiedoc';
@@ -21,51 +21,38 @@ export class AppComponent implements OnDestroy {
 
 
   setbackground(currentRoute) {
-  switch (currentRoute) {
-    case '/game':
-    {
-      console.log('background set');
-      this.backgroundClass = 'game-background';
-    }
-      break;
+    switch (currentRoute) {
+      case '/game': {
+          console.log('background set');
+          this.backgroundClass = 'game-background';
 
-    default:
-      break;
-  }
-  switch (currentRoute) {
-    case '/intro':
-    {
-      console.log('background set');
-      this.backgroundClass = 'intro-background';
-    }
-      break;
+          break;
+        }
+      case '/dialog': {
+          console.log('background set');
+          this.backgroundClass = 'dialog-background';
 
-    default:
-      break;
-  }
-  switch (currentRoute) {
-    case '/start':
-    {
-      console.log('background set');
-      this.backgroundClass = 'start-background';
-    }
-      break;
+          break;
+        }
+      case '/intro': {
+          console.log('background set');
+          this.backgroundClass = 'intro-background';
 
-    default:
-      break;
-  }
-  switch (currentRoute) {
-    case '/dialog':
-    {
-      console.log('background set');
-      this.backgroundClass = 'dialog-background';
-    }
-      break;
+          break;
+        }
+      case '/start': {
+          console.log('background set');
+          this.backgroundClass = 'start-background';
 
-    default:
-      {
-        this.backgroundClass = 'background';
-      }
-      break;
+          break;
+        }
+
+      default:
+        {
+          this.backgroundClass = 'background';
+
+          break;
+        }
+
+    }
   }}
-}

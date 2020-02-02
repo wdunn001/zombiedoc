@@ -17,6 +17,8 @@ export class DialogScreenComponent implements OnInit {
 
   nextScreen = 'game';
 
+  image = "";
+
   dialogIndex = 0;
 
   @HostListener('window:keyup', ['$event'])
@@ -38,6 +40,9 @@ export class DialogScreenComponent implements OnInit {
     }
     if (route.snapshot.data.nextScreen) {
       this.nextScreen = route.snapshot.data.nextScreen;
+    }
+    if (route.snapshot.data.image) {
+      this.image = route.snapshot.data.image;
     }
   }
 
