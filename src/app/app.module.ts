@@ -12,6 +12,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SafeUrlPipe } from './services/safe-url.pipe';
 import { StitchMiniGameComponent } from './stitch-mini-game/stitch-mini-game.component';
 import { IntroComponent } from './intro/intro.component';
+import { RevealComponent } from './reveal/reveal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { IntroComponent } from './intro/intro.component';
     GameScreenComponent,
     SafeUrlPipe,
     StitchMiniGameComponent,
-    IntroComponent
+    IntroComponent,
+    RevealComponent
   ],
   imports: [
     BrowserModule,

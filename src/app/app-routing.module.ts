@@ -5,6 +5,7 @@ import { DialogScreenComponent } from './dialog-screen/dialog-screen.component';
 import { GameScreenComponent } from './game-screen/game-screen.component';
 import { StitchMiniGameComponent } from './stitch-mini-game/stitch-mini-game.component';
 import { IntroComponent } from './intro/intro.component';
+import { RevealComponent } from './reveal/reveal.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,16 @@ const routes: Routes = [
     component: DialogScreenComponent,
     data: { title: 'Dialog',
     image: 'assets/backgrounds/couplepicture.jpg',
+     dialog: [
+      'Aww honey! She has your father’s eyes!',
+      'I’m so glad we saved those when we ate him!'
+    ], nextScreen: 'start' }
+  },
+  {
+    path: 'reveal',
+    component: RevealComponent,
+    data: { title: 'Reveal',
+    image: 'assets/backgrounds/Birth_Announcement.jpg',
      dialog: [
       'Aww honey! She has your father’s eyes!',
       'I’m so glad we saved those when we ate him!'
