@@ -18,7 +18,13 @@ export class GameScreenComponent implements OnInit {
 
   basket: Part[] = [
   ];
-
+  playAudio(){
+    console.log('yes this did happen')
+    let audio = new Audio();
+    audio.src = "assets/audio/grabSound.wav";
+    audio.load();
+    audio.play();
+  }
 
   items: Part[] = [
     { type: partType.leg,
@@ -56,6 +62,7 @@ export class GameScreenComponent implements OnInit {
 
   ngOnInit() {
     this.items = this.bodypart.parts;
+
   }
 
   drop(event: CdkDragDrop<Part[]>, partNeededString: string) {

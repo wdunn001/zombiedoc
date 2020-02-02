@@ -1,8 +1,16 @@
 <div class="{{backgroundClass}}">
 <router-outlet></router-outlet>
 </div>
-<audio *ngIf="['/start', '/intro'].includes(url)" id="player" autoplay loop>
-   <source src="assets/audio/intro_music.mp3" type="audio/mp3">
+<audio *ngIf="['/intro'].includes(url)" id="player" autoplay loop>
+   <source src="assets/audio/introMusic.mp3" type="audio/mp3">
+</audio>
+
+<audio *ngIf="['/game'].includes(url)" id="player" autoplay loop>
+  <source src="assets/audio/gameMusic.mp3" type="audio/mp3">
+</audio>
+
+<audio *ngIf="['/start', '/beginning', '/ending'].includes(url)" id="player" autoplay loop>
+  <source src="assets/audio/startMusic.mp3" type="audio/mp3">
 </audio>
 
 
