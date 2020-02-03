@@ -19,7 +19,8 @@ export class IntroComponent implements OnInit {
 
   dialogIndex = 0;
 
-  @HostListener('touchstart', ['$event'])
+  @HostListener('mouseup', ['$event'])
+  @HostListener('touchend', ['$event'])
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     this.continue();
