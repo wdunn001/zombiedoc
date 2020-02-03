@@ -19,7 +19,7 @@ export class RevealComponent implements OnInit {
   image = "";
 
   dialogIndex = 0;
-
+  @HostListener('mouseup', ['$event'])
   @HostListener('touchstart', ['$event'])
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
