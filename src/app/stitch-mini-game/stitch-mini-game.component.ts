@@ -13,20 +13,21 @@ export class StitchMiniGameComponent implements AfterViewInit {
   board = [
     '#####################',
     '#                   #',
-    '#      *            #',
-    '#                   #',
-    '#            *      #',
-    '#                   #',
-    '#    *              #',
-    '#                   #',
-    '#                *  #',
     '#                   #',
     '#                   #',
-    '#    *              #',
-    '#                *  #',
+    '#                   #',
+    '#                   #',
+    '#                   #',
+    '#                   #',
+    '#                   #',
+    '#                   #',
+    '#                   #',
+    '#                   #',
+    '#                   #',
     '#                   #',
     '#####################'
   ];
+
   trace = {
     hole: '*',
     empty: ' ',
@@ -41,7 +42,8 @@ export class StitchMiniGameComponent implements AfterViewInit {
   parts = [
     {x: 1, y: 1},
   ];
-  stichCount = 6;
+  stichCount: number;
+  stichError = 0;
   facing = 'E';
   squareSize = 30;
   img = new Image(this.squareSize, this.squareSize);
@@ -53,14 +55,13 @@ export class StitchMiniGameComponent implements AfterViewInit {
   threadV = new Image();
   threadHV = new Image();
   needle: HTMLImageElement;
-  thread: HTMLImageElement;
 
   @ViewChild('canvas', {static: false}) canvas: ElementRef<HTMLCanvasElement>;
 
   isEmpty(location) {
     const currentCharacter = this.board[location.y][location.x];
     if (currentCharacter === this.trace.border) { return false; }
-    if (currentCharacter === '*') { this.stichCount--; }
+    if (currentCharacter === this.trace.hole) { this.stichCount--; }
 
     let temp = this.board[location.y];
     const trace = this.getTrace(currentCharacter);
@@ -72,18 +73,36 @@ export class StitchMiniGameComponent implements AfterViewInit {
 
   getTrace(character) {
     if (character === this.trace.empty ) {
-      return this.facing in ['N', 'S'] ? this.trace.threadVempty : this.trace.threadHempty;
+      return ['N', 'S'].includes(this.facing) ? this.trace.threadVempty : this.trace.threadHempty;
     } else if (character === this.trace.hole ) {
-      return this.facing in ['N', 'S'] ? this.trace.threadVhole : this.trace.threadHhole;
-    } else if (character in [this.trace.threadHempty, this.trace.threadVempty] ) {
+      return ['N', 'S'].includes(this.facing) ? this.trace.threadVhole : this.trace.threadHhole;
+    } else if (this.trace.threadHempty === character) {
+      return ['E', 'W'].includes(this.facing) ? this.trace.threadHempty : this.trace.threadHVempty;
+    } else if (this.trace.threadVempty === character) {
+      return ['E', 'W'].includes(this.facing) ? this.trace.threadHVempty : this.trace.threadVempty;
+    } else if (this.trace.threadHVempty === character) {
       return this.trace.threadHVempty;
+    } else if (this.trace.threadHhole === character) {
+      return ['E', 'W'].includes(this.facing) ? this.trace.threadHhole : this.trace.threadHVhole;
+    } else if (this.trace.threadVhole === character) {
+      return ['E', 'W'].includes(this.facing) ? this.trace.threadHVhole : this.trace.threadVhole;
     } else { return this.trace.threadHVhole; }
   }
 
+  detectErrors() {
+    const xStich = [this.trace.threadHVempty, this.trace.threadHVhole];
+    this.board.forEach( line => {
+      const lineArr = line.split('');
+      lineArr.forEach( character => {
+        if (xStich.includes(character)) { this.stichError++; }
+      });
+    });
+  }
+
   nextLocation() {
-    const snakeHead = this.parts[0];
-    let targetX = snakeHead.x;
-    let targetY = snakeHead.y;
+    const needle = this.parts[0];
+    let targetX = needle.x;
+    let targetY = needle.y;
     targetY = this.facing === 'N' ? targetY - 1 : targetY;
     targetY = this.facing === 'S' ? targetY + 1 : targetY;
     targetX = this.facing === 'W' ? targetX - 1 : targetX;
@@ -96,9 +115,6 @@ export class StitchMiniGameComponent implements AfterViewInit {
     if (this.isEmpty(location)) {
       this.parts.unshift(location);
       this.parts.pop();
-    }
-    if (this.isDone()) {
-      this.complete.emit();
     }
   }
 
@@ -139,7 +155,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
     });
   }
 
-  drawSnake(ctx) {
+  drawNeedle(ctx) {
     this.parts.forEach( part => {
       const partXlocation = part.x * this.squareSize;
       const partYlocation = part.y * this.squareSize;
@@ -151,7 +167,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
     const ctx = this.canvas.nativeElement.getContext('2d');
     ctx.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
     this.drawBoard(ctx);
-    this.drawSnake(ctx);
+    this.drawNeedle(ctx);
   }
 
   processInput(keyPressed) {
@@ -175,7 +191,13 @@ export class StitchMiniGameComponent implements AfterViewInit {
     this.tickNumber++;
     this.move();
     this.drawGame();
-    this.timer = setTimeout( () => this.tick(), 200);
+    if (this.isDone()) {
+      this.complete.emit();
+      this.detectErrors();
+      console.log(this.stichError); // potentially score points for good stiching.
+    } else {
+      this.timer = setTimeout( () => this.tick(), 300);
+    }
   }
 
   constructor() {
@@ -188,11 +210,30 @@ export class StitchMiniGameComponent implements AfterViewInit {
     this.threadV.src = 'assets/misc/threadV.png';
     this.threadHV.src = 'assets/misc/threadHV.png';
     this.needle = this.needleE;
+    this.generateBoard();
+  }
+
+  generateBoard() {
+    const width = 18;
+    const height = 13;
+    const numberOfHoles = Math.floor( Math.random() * Math.floor(9) + 4);
+    const holes = new Set();
+    for (let count = 0; count < numberOfHoles; count++) {
+      const row = Math.floor( Math.random() * Math.floor(height) + 1 );
+      const column = Math.floor( Math.random() * Math.floor(width) + 1 );
+      if (holes.has(String(column) + String(row))) {
+        count--;
+      } else {
+        holes.add(String(column) + String(row));
+        let temp = this.board[row];
+        temp = temp.substr(0, column) + this.trace.hole + temp.substr(column + 1);
+        this.board[row] = temp;
+      }
+    }
+    this.stichCount = holes.size;
   }
 
   ngAfterViewInit() {
     this.tick();
   }
-
-
 }
