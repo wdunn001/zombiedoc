@@ -3,8 +3,13 @@
   box-sizing: border-box;
   width: 100vw;
   overflow: auto;
-  min-height: 3em;
+  min-height: 30vh;
   background-color: #000;
+  font-size: 1em;
+  text-align: center;
+  @media screen and (max-width: 600px) {
+    font-size: .5em;
+    }
 }
 
 .scene {
