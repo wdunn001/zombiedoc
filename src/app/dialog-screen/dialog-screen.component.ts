@@ -11,7 +11,7 @@ import { debounce } from 'rxjs/operators';
 export class DialogScreenComponent implements OnInit, OnDestroy {
 
 
-clicked: Subject<void> = new Subject<void>();
+clicked: Subject<void>;
 
 clicked$: Subscription;
 
@@ -25,10 +25,11 @@ clicked$: Subscription;
   image = "";
 
   dialogIndex = 0;
+
   @HostListener('mouseup', ['$event'])
   @HostListener('touchend', ['$event'])
   @HostListener('window:keyup', ['$event'])
-  keyEvent() {
+  keyEvent(event: KeyboardEvent) {
     this.clicked.next();
   }
 
