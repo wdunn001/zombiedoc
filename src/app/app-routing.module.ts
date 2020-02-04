@@ -14,7 +14,7 @@ const routes: Routes = [
     component: IntroComponent,
     data: { title: 'Intro', dialog: [
       'The dead roam the earth.'
-      ,'Humanity is nearing extinction. They are losing the fight.'
+      , 'Humanity is nearing extinction. They are losing the fight.'
       , 'And now, their last hope at survival is extinguished'
       , 'As the dead find a way to multiply their numbers…'
     ], nextScreen: 'start' }

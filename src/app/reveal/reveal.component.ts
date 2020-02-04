@@ -16,9 +16,10 @@ export class RevealComponent implements OnInit {
 
   nextScreen = 'game';
 
-  image = "";
+  image = '';
 
   dialogIndex = 0;
+
   @HostListener('mouseup', ['$event'])
   @HostListener('touchend', ['$event'])
   @HostListener('window:keyup', ['$event'])
