@@ -13,19 +13,33 @@ body {
   margin: 0;
 }
 
+.game {
+  height: 100vh;
+}
 
 
 .body-part {
   width: 20vh;
+  @media screen and (max-width: 800px) {
+
+    width: 10vh;
+    }
 
 }
 
 .head {
   height: 20vh;
+  @media screen and (max-width: 800px) {
+    height: 10vh;
+    }
 }
 
 .arm {
   height: 45vh;
+  @media screen and (max-width: 800px) {
+
+    height: 22.5vh;
+    }
 }
 
 .left {
@@ -37,10 +51,18 @@ body {
 
 .torso {
   height: 30vh;
+  @media screen and (max-width: 800px) {
+
+    height: 15vh;
+  }
 }
 
 .legs {
 height: 40.5vh;
+@media screen and (max-width: 800px) {
+
+  height: 20.25vh;
+  }
 }
 
 .body {
