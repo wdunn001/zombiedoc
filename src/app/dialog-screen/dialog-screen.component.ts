@@ -11,7 +11,7 @@ import { debounce } from 'rxjs/operators';
 export class DialogScreenComponent implements OnInit, OnDestroy {
 
 
-clicked: Subject<void>;
+clicked: Subject<void> = new Subject<void>();
 
 clicked$: Subscription;
 
