@@ -1,12 +1,18 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subject, Subscription, interval } from 'rxjs';
+import { debounce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-intro',
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.scss']
 })
-export class IntroComponent implements OnInit {
+export class IntroComponent implements OnInit, OnDestroy {
+
+  clicked: Subject<void> = new Subject<void>();
+
+  clicked$: Subscription;
 
   dialog: string[] = [
     'This is a test string how well does it work?',
@@ -23,8 +29,7 @@ export class IntroComponent implements OnInit {
   @HostListener('touchend', ['$event'])
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    this.continue();
-
+    this.clicked.next();
   }
 
 
@@ -48,6 +53,7 @@ export class IntroComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.clicked$ = this.clicked.pipe(debounce(() => interval(100))).subscribe(() => {this.continue(); });
   }
 
   init() {
@@ -63,4 +69,7 @@ export class IntroComponent implements OnInit {
 
   }
 
+  ngOnDestroy(): void {
+    this.clicked$.unsubscribe();
+  }
 }

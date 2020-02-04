@@ -39,7 +39,9 @@
     background-image: url("~/assets/backgrounds/zombiebackground.jpg");
     border: none !important;
     height:100vh;
-
+    @media screen and (min-width: 800px) {
+      width: 100vw;
+    }
 
   }
   span {

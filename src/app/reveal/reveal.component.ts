@@ -1,13 +1,20 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BodyPartsService } from '../services/body-parts.service';
+import { Subject, Subscription, interval } from 'rxjs';
+import { debounce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-reveal',
   templateUrl: './reveal.component.html',
   styleUrls: ['./reveal.component.scss']
 })
-export class RevealComponent implements OnInit {
+export class RevealComponent implements OnInit, OnDestroy {
+
+
+  clicked: Subject<void> = new Subject<void>();
+
+clicked$: Subscription;
 
   dialog: string[] = [
     'This is a test string how well does it work?',
@@ -24,7 +31,7 @@ export class RevealComponent implements OnInit {
   @HostListener('touchend', ['$event'])
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    this.continue();
+    this.clicked.next();
 
   }
 
@@ -49,8 +56,9 @@ export class RevealComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+    this.clicked$ = this.clicked.pipe(debounce(() => interval(100))).subscribe(() => {this.continue(); });
 
+  }
   init() {
     this.dialogIndex = 0;
   }
@@ -62,6 +70,10 @@ export class RevealComponent implements OnInit {
       this.router.navigate([this.nextScreen]);
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.clicked$.unsubscribe();
   }
 
 }
