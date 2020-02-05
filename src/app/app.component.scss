@@ -10,8 +10,8 @@
 
   /* This is what makes the background image rescale based
      on the container's size */
-  background-size: cover;
-
+     background-size: cover;
+     background-position: center;
   /* Set a background color that will be displayed
      while the background image is loading */
   background-color: #464646;
@@ -21,7 +21,14 @@
 }
 
 .game-background {
- background-image: url("~/assets/backgrounds/floor.jpg");
+
+
+  background-image: url("~/assets/backgrounds/floor.jpg");
+
+
+@media (max-width: 600px) {
+  background-image: url("~/assets/backgrounds/floor_rotated.jpg");
+}
 }
 .intro-background {
   background-image: url("~/assets/backgrounds/otherbackground.png");
