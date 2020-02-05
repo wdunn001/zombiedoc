@@ -11,23 +11,23 @@
         <div class="body-part head"></div>
         <div cdkDropList [cdkDropListData]="rightArm" class="body-part arm right"
           (cdkDropListDropped)="drop($event, 'arm')">
-          <div class="example-box" *ngFor="let item of rightArm" cdkDrag><img height="100%" width="100%"
+          <div class="arm part-image-container" *ngFor="let item of rightArm" cdkDrag><img height="100%" width="100%"
               [src]="item.image|safeUrl" /></div>
         </div>
       </div>
       <div fxLayout="column" fxLayoutAlign="start start">
         <div cdkDropList [cdkDropListData]="head" class="body-part head" (cdkDropListDropped)="drop($event, 'head')">
-          <div class="example-box" *ngFor="let item of head" cdkDrag><img height="100%" width="100%"
+          <div class="head part-image-container" *ngFor="let item of head" cdkDrag><img height="100%" width="100%"
               [src]="item.image|safeUrl" /></div>
         </div>
         <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDragEntered)="playAudio()"
           (cdkDropListDropped)="drop($event, 'torso')">
-          <div class="example-box" *ngFor="let item of torso" cdkDrag><img height="100%" width="100%"
+          <div class="torso part-image-container" *ngFor="let item of torso" cdkDrag><img height="100%" width="100%"
               [src]="item.image|safeUrl" /></div>
         </div>
         <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDragEntered)="playAudio()"
           (cdkDropListDropped)="drop($event, 'leg')">
-          <div class="example-box" *ngFor="let item of legs" cdkDrag><img height="100%" width="100%"
+          <div class="legs part-image-container" *ngFor="let item of legs" cdkDrag><img height="100%" width="100%"
               [src]="item.image|safeUrl" /></div>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <div class="body-part head"></div>
         <div cdkDropList [cdkDropListData]="leftArm" class="body-part arm left"
           (cdkDropListDropped)="drop($event, 'arm')">
-          <div class="example-box" *ngFor="let item of leftArm" cdkDrag><img height="100%" width="100%"
+          <div class="arm part-image-container" *ngFor="let item of leftArm" cdkDrag><img height="100%" width="100%"
               [src]="item.image|safeUrl" /></div>
         </div>
       </div>
