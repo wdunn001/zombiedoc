@@ -16,7 +16,8 @@
         </div>
       </div>
       <div fxLayout="column" fxLayoutAlign="start start">
-        <div cdkDropList [cdkDropListData]="head" class="body-part head" (cdkDropListDropped)="drop($event, 'head')">
+        <div cdkDropList [cdkDropListData]="head" class="body-part head"
+          (cdkDropListDropped)="drop($event, 'head')">
           <div class="head part-image-container" *ngFor="let item of head" cdkDrag><img height="100%" width="100%"
               [src]="item.image|safeUrl" /></div>
         </div>
