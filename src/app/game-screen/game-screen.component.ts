@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Part, partType } from '../models/part.model';
 import { ArgumentOutOfRangeError } from 'rxjs';
 import { BodyPartsService } from '../services/body-parts.service';
@@ -18,32 +18,30 @@ export class GameScreenComponent implements OnInit {
 
   basket: Part[] = [
   ];
-  playAudio(){
-    console.log('yes this did happen')
-    let audio = new Audio();
-    audio.src = "assets/audio/grabSound.wav";
-    audio.load();
-    audio.play();
-  }
 
   items: Part[] = [
-    { type: partType.leg,
+    {
+      type: partType.leg,
       image: 'https://via.placeholder.com/200x200.png?text=Part',
       name: 'left leg'
     },
-    { type: partType.arm,
+    {
+      type: partType.arm,
       image: 'https://via.placeholder.com/200x200.png?text=Part',
       name: 'left arm'
     },
-    { type: partType.arm,
+    {
+      type: partType.arm,
       image: 'https://via.placeholder.com/200x200.png?text=Part',
       name: 'right arm'
     },
-    { type: partType.head,
+    {
+      type: partType.head,
       image: 'https://via.placeholder.com/200x200.png?text=Part',
       name: 'head'
     },
-    { type: partType.torso,
+    {
+      type: partType.torso,
       image: 'https://via.placeholder.com/200x200.png?text=Part',
       name: 'torso'
     },
@@ -56,14 +54,25 @@ export class GameScreenComponent implements OnInit {
   legs: Part[] = [];
   leftArm: Part[] = [];
   rightArm: Part[] = [];
-  @ViewChild(ModalComponent, {static: false}) modal: ModalComponent;
+
+  @ViewChild(ModalComponent, { static: false }) modal: ModalComponent;
 
   constructor(private router: Router, public bodypart: BodyPartsService) { }
+
+
 
   ngOnInit() {
     this.items = this.shuffle(this.bodypart.parts);
 
   }
+
+  playAudio() {
+    const audio = new Audio();
+    audio.src = 'assets/audio/grabSound.wav';
+    audio.load();
+    audio.play();
+  }
+
 
   shuffle(parts: Part[]) {
     const array: Part[] = parts;
@@ -74,40 +83,32 @@ export class GameScreenComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Part[]>, partNeededString: string) {
-    if(partNeededString === 'bin') {
-      if (event.previousContainer === event.container) {
-        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      } else {
-        transferArrayItem(event.previousContainer.data,
-                          event.container.data,
-                          event.previousIndex,
-                          event.currentIndex);
-      }
+    if (partNeededString === 'bin') {
+      this.moveItem(event);
     } else {
-    let partNeeded: partType = partType[partNeededString];
-    if (partNeededString === event.previousContainer.data[event.previousIndex].type) {
+      console.log(partNeededString, ' and ' ,event.previousContainer.data[event.previousIndex].type)
+      if (partNeededString === event.previousContainer.data[event.previousIndex].type) {
+        this.moveItem(event);
+        if (event.container.data.length > 1) {
+          transferArrayItem(
+            event.container.data,
+            this.items,
+            0,
+            event.previousIndex);
+        }
+      }
+    }
+  }
 
-
+  moveItem(event: CdkDragDrop<Part[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     }
-    if (event.container.data.length > 1) {
-      console.log(event.container.data);
-
-      transferArrayItem(
-              event.container.data,
-              this.items,
-              1,
-              event.previousIndex);
-
-          }
-        }
-      }
   }
 
   closeModalAndDrop() {
@@ -123,12 +124,12 @@ export class GameScreenComponent implements OnInit {
   }
 
   isAdjacentPiecePresent(bodyType: string) {
-    if (bodyType === 'Torso'){
+    if (bodyType === 'Torso') {
       if (this.head.length > 0 || this.leftArm.length > 0 || this.rightArm.length > 0 || this.legs.length > 0) {
         return true;
       }
     } else {
-      if (this.torso.length > 0){
+      if (this.torso.length > 0) {
         return true;
       }
     }
@@ -156,11 +157,11 @@ export class GameScreenComponent implements OnInit {
   }
 
   end() {
-     this.bodypart.head = this.head;
-     this.bodypart.leftArm = this.leftArm;
-     this.bodypart.rightArm = this.rightArm;
-     this.bodypart.torso = this.torso;
-     this.bodypart.legs = this.legs;
+    this.bodypart.head = this.head;
+    this.bodypart.leftArm = this.leftArm;
+    this.bodypart.rightArm = this.rightArm;
+    this.bodypart.torso = this.torso;
+    this.bodypart.legs = this.legs;
     this.router.navigate(['ending']);
   }
 

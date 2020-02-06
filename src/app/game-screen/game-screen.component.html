@@ -48,9 +48,7 @@
     <div fxLayout="column" fxLayout.lt-sm="row" fxLayoutAlign="start center">
       <div cdkDropList [cdkDropListData]="items" fxLayout.lt-sm="row" (cdkDragEntered)="playAudio()" class="parts-list"
         cdkDropListSortingDisabled (cdkDropListDropped)="drop($event, 'bin')">
-        <div class="body-part {{item.type}}" *ngFor="let item of items" cdkDrag><img height="100%" width="100%"
-            [src]="item.image|safeUrl" /></div>
-
+        <div class="body-part {{item.type}}" *ngFor="let item of items" cdkDrag><img height="100%" width="100%" [src]="item.image|safeUrl" /></div>
       </div>
     </div>
   </div>
