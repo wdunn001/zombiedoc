@@ -46,8 +46,7 @@
     {
       "src": "\/assets/Spash-Screen-512x512.png",
       "sizes": "512x512",
-      "type": "image\/png",
-      "density": "4.0"
+      "type": "image\/png"
      }
    ]
 }
