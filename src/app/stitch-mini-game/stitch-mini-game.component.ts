@@ -172,6 +172,15 @@ export class StitchMiniGameComponent implements AfterViewInit {
 
   processInput(keyPressed) {
     const key = keyPressed.key.toLowerCase();
+    this.setDirection(key);
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    this.processInput(event);
+  }
+
+  setDirection(key) {
     let targetDirection = this.facing;
     if (key === 'w') { targetDirection = 'N'; this.needle = this.needleN; }
     if (key === 'a') { targetDirection = 'W'; this.needle = this.needleW; }
@@ -181,10 +190,19 @@ export class StitchMiniGameComponent implements AfterViewInit {
     this.tick();
   }
 
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    this.processInput(event);
+  left() {
+    this.setDirection('a');
   }
+  right() {
+    this.setDirection('d');
+  }
+  up() {
+    this.setDirection('w');
+  }
+  down() {
+    this.setDirection('s');
+  }
+
 
   tick() {
     clearTimeout(this.timer);
