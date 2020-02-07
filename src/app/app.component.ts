@@ -25,14 +25,14 @@ export class AppComponent implements OnDestroy {
       this.router.events.subscribe(r => { if (r['url'] != null) { this.url = r['url']; this.setbackground(r['url']); } })];
 
   }
-  title = 'zombiedoc';
+  title = 'Zombuilder';
 
   ngOnDestroy() { this.subscriptions.map(s => s.unsubscribe()); }
 
   playAudio() {
     if (this.url !== '/intro') {
     let audio = new Audio();
-    audio.src = "assets/audio/tearSound.wav";
+    audio.src = "/assets/audio/tearSound.wav";
     audio.load();
     audio.play();
     }
@@ -40,31 +40,26 @@ export class AppComponent implements OnDestroy {
   setbackground(currentRoute) {
     switch (currentRoute) {
       case '/game': {
-          console.log('background set');
           this.backgroundClass = 'game-background';
 
           break;
         }
       case '/dialog': {
-          console.log('background set');
           this.backgroundClass = 'dialog-background';
 
           break;
         }
       case '/intro': {
-          console.log('background set');
           this.backgroundClass = 'intro-background';
 
           break;
         }
       case '/start': {
-          console.log('background set');
           this.backgroundClass = 'start-background';
 
           break;
         }
         case '/reveal': {
-          console.log('background set');
           this.backgroundClass = 'reveal-background';
 
           break;
