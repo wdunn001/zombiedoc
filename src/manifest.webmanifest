@@ -1,8 +1,8 @@
 {
-  "name": "zombiedoc",
-  "short_name": "zombiedoc",
+  "name": "Zombie Builder",
+  "short_name": "Zombbuilder",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#67447A",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
@@ -42,6 +42,12 @@
      "sizes": "192x192",
      "type": "image\/png",
      "density": "4.0"
-    }
+    },
+    {
+      "src": "\/assets/Spash-Screen-512x512.png",
+      "sizes": "512x512",
+      "type": "image\/png",
+      "density": "4.0"
+     }
    ]
 }

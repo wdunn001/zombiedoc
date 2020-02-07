@@ -8,7 +8,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
-
+  subscriptions: Subscription[];
+  url: string;
+  backgroundClass = 'background';
+  title = 'Zombuilder';
   @ViewChild('tearSound', {static: true}) tearSound: ElementRef<HTMLAudioElement>;
 
     @HostListener('window:keyup', ['$event'])
@@ -16,23 +19,21 @@ export class AppComponent implements OnDestroy {
       this.playAudio();
     }
 
-  subscriptions: Subscription[];
-  url: string;
-  backgroundClass = 'background';
+
 
   constructor(private router: Router) {
     this.subscriptions = [
       this.router.events.subscribe(r => { if (r['url'] != null) { this.url = r['url']; this.setbackground(r['url']); } })];
 
   }
-  title = 'Zombuilder';
+
 
   ngOnDestroy() { this.subscriptions.map(s => s.unsubscribe()); }
 
   playAudio() {
     if (this.url !== '/intro') {
     let audio = new Audio();
-    audio.src = "/assets/audio/tearSound.wav";
+    audio.src = '/assets/audio/tearSound.wav';
     audio.load();
     audio.play();
     }
