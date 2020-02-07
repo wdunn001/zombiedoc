@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stitch-mini-game',
@@ -213,12 +214,13 @@ export class StitchMiniGameComponent implements AfterViewInit {
       this.complete.emit();
       this.detectErrors();
       console.log(this.stichError); // potentially score points for good stiching.
+      this.router.navigate(['ending']);s
     } else {
       this.timer = setTimeout( () => this.tick(), 300);
     }
   }
 
-  constructor() {
+  constructor(private router: Router) {
     this.img.src = 'assets/backgrounds/hole.png';
     this.needleN.src = 'assets/misc/needleN.png';
     this.needleS.src = 'assets/misc/needleS.png';
