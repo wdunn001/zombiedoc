@@ -13,4 +13,91 @@ body {
   margin: 0;
 }
 
+.game {
+  height: 100vh;
+}
 
+
+.body-part {
+  display: flex;
+  width: 20vh;
+  @media screen and (max-width: 800px) {
+
+    width: 10vh;
+    }
+
+}
+
+.head {
+  height: 20vh;
+  @media screen and (max-width: 800px) {
+    height: 10vh;
+    }
+}
+
+.arm {
+  height: 45vh;
+  @media screen and (max-width: 800px) {
+
+    height: 22.5vh;
+    }
+}
+
+.left {
+  & img {
+    transform: scaleX(-1);
+  }
+
+}
+
+.torso {
+  height: 30vh;
+  @media screen and (max-width: 800px) {
+
+    height: 15vh;
+  }
+}
+
+.legs {
+height: 40.5vh;
+@media screen and (max-width: 800px) {
+
+  height: 20.25vh;
+  }
+}
+
+.body {
+  background-position: center center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+
+
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+
+  /* Set a background color that will be displayed
+     while the background image is loading */
+
+
+
+}
+
+.overlay {
+  pointer-events: none;
+  position: absolute; /* Sit on top of the page content */
+  width: 100vw; /* Full width (cover the whole page) */
+  height: 100vh; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.part-image-container {
+  display: contents !important;
+}

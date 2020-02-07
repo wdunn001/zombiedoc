@@ -1,14 +1,19 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subject, Subscription, interval } from 'rxjs';
+import { debounce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dialog-screen',
   templateUrl: './dialog-screen.component.html',
   styleUrls: ['./dialog-screen.component.scss']
 })
-export class DialogScreenComponent implements OnInit {
+export class DialogScreenComponent implements OnInit, OnDestroy {
 
 
+clicked: Subject<void> = new Subject<void>();
+
+clicked$: Subscription;
 
   dialog: string[] = [
     'This is a test string how well does it work?',
@@ -21,11 +26,11 @@ export class DialogScreenComponent implements OnInit {
 
   dialogIndex = 0;
 
-  @HostListener('touchstart', ['$event'])
+  @HostListener('mouseup', ['$event'])
+  @HostListener('touchend', ['$event'])
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    this.continue();
-
+    this.clicked.next();
   }
 
 
@@ -48,6 +53,7 @@ export class DialogScreenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.clicked$ = this.clicked.pipe(debounce(() => interval(100))).subscribe(() => {this.continue(); });
   }
 
   init() {
@@ -61,6 +67,10 @@ export class DialogScreenComponent implements OnInit {
       this.router.navigate([this.nextScreen]);
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.clicked$.unsubscribe();
   }
 
 }

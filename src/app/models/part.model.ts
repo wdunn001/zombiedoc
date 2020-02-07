@@ -7,8 +7,8 @@ export interface Part {
 }
 
 export enum partType {
-  leg = 'Leg',
-  torso = 'Torso',
-  arm = 'Arm',
-  head = 'Head'
+  leg = 'leg',
+  torso = 'torso',
+  arm = 'arm',
+  head = 'head'
 }

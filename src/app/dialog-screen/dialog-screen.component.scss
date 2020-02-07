@@ -1,12 +1,15 @@
-.game {
-  height: 100vh;
-}
+
 .dialog {
   box-sizing: border-box;
   width: 100vw;
   overflow: auto;
-  min-height: 210px;
+  min-height: 30vh;
   background-color: #000;
+  font-size: 1em;
+  text-align: center;
+  @media screen and (max-width: 600px) {
+    font-size: .5em;
+    }
 }
 
 .scene {
@@ -36,7 +39,9 @@
     background-image: url("~/assets/backgrounds/zombiebackground.jpg");
     border: none !important;
     height:100vh;
-
+    @media screen and (min-width: 800px) {
+      width: 100vw;
+    }
 
   }
   span {
