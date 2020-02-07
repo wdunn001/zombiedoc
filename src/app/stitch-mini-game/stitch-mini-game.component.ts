@@ -37,7 +37,7 @@ export class StitchMiniGameComponent implements AfterViewInit {
   squareSize = 30;
   img = new Image(this.squareSize, this.squareSize);
 
-  @ViewChild('canvas', {static: false}) canvas: ElementRef<HTMLCanvasElement>;
+  @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
 
   isEmpty(location) {
     const currentCharacter = this.board[location.y][location.x];

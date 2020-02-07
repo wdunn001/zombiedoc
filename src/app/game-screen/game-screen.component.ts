@@ -55,7 +55,7 @@ export class GameScreenComponent implements OnInit {
   leftArm: Part[] = [];
   rightArm: Part[] = [];
 
-  @ViewChild(ModalComponent, { static: false }) modal: ModalComponent;
+  @ViewChild(ModalComponent) modal: ModalComponent;
 
   constructor(private router: Router, public bodypart: BodyPartsService) { }
 
