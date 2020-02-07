@@ -13,6 +13,8 @@ import { SafeUrlPipe } from './services/safe-url.pipe';
 import { StitchMiniGameComponent } from './stitch-mini-game/stitch-mini-game.component';
 import { IntroComponent } from './intro/intro.component';
 import { RevealComponent } from './reveal/reveal.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { RevealComponent } from './reveal/reveal.component';
     AppRoutingModule,
     FormsModule,
     FlexLayoutModule,
-    DragDropModule
+    DragDropModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

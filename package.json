@@ -10,7 +10,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:electron": "ng build --outputHashing=all --vendor-chunk --common-chunk --delete-output-path --buildOptimizer --base-href ./ && electron ."
+    "start:electron": "ng build --outputHashing=all --vendor-chunk --common-chunk --delete-output-path --buildOptimizer --base-href ./ && electron .",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "update:packages": "rm -rf node_modules && npm i"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +26,7 @@
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
+    "@angular/service-worker": "~9.0.0",
     "angular-custom-modal": "^1.2.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
