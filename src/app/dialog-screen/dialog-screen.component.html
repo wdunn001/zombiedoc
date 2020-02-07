@@ -1,10 +1,10 @@
 
 <div fxFlex class="game" fxLayout="column" fxLayoutAlign="start start">
 
-  <div class="scene" fxFlex>
-    <img height="100%" width="100%" *ngIf="image" [src]="image | safeUrl" />
+  <div class="scene" fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <img height="100%" *ngIf="image" [src]="image | safeUrl" />
   </div>
   <div class="dialog" fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
-<span>{{dialog[dialogIndex]}}</span>
+    <span>{{dialog[dialogIndex]}}</span>
   </div>
 </div>

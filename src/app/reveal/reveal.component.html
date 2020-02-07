@@ -1,4 +1,4 @@
-<div class="backdrop" fxLayout="row" fxLayoutAlign="center center">
+<div class="backdrop" fxLayout="row" fxLayoutAlign="center center" style="height: 100%">
 
   <div class="body" fxLayout="row" fxAlign="center" fxLayoutAlign="center start">
 
@@ -6,26 +6,26 @@
     <div fxLayout="column" fxLayoutAlign="start start">
       <div class="body-part head"></div>
       <div class="body-part arm right">
-        <div class="example-box" *ngFor="let item of bodyParts.rightArm" ><img [src]="item.image|safeUrl" />
-        </div>
+        <div class="arm part-image-container"  *ngFor="let item of bodyParts.rightArm" ><img  height="100%" width="100%" [src]="item.image|safeUrl" /></div>
       </div>
     </div>
+
     <div fxLayout="column" fxLayoutAlign="start start">
-      <div cclass="body-part head">
-        <div class="example-box" *ngFor="let item of bodyParts.head" ><img [src]="item.image|safeUrl" /></div>
+      <div class="body-part head">
+        <div class="head part-image-container"  *ngFor="let item of bodyParts.head" ><img  height="100%" width="100%" [src]="item.image|safeUrl" /></div>
       </div>
       <div class="body-part torso">
-        <div class="example-box" *ngFor="let item of bodyParts.torso" ><img [src]="item.image|safeUrl" /></div>
+        <div class="torso part-image-container" *ngFor="let item of bodyParts.torso" ><img  height="100%" width="100%" [src]="item.image|safeUrl" /></div>
       </div>
       <div class="body-part legs">
-        <div class="example-box" *ngFor="let item of bodyParts.legs" ><img [src]="item.image|safeUrl" /></div>
+        <div class="legs part-image-container"  *ngFor="let item of bodyParts.legs" ><img  height="100%" width="100%" [src]="item.image|safeUrl" /></div>
       </div>
     </div>
 
     <div fxLayout="column" fxLayoutAlign="start start">
       <div class="body-part head"></div>
       <div class="body-part arm left">
-        <div class="example-box" *ngFor="let item of bodyParts.leftArm" ><img [src]="item.image|safeUrl" /></div>
+        <div class="arm part-image-container"  *ngFor="let item of bodyParts.leftArm" ><img  height="100%" width="100%" [src]="item.image|safeUrl" /></div>
       </div>
     </div>
 

@@ -1,59 +1,66 @@
-<div cdkDropListGroup class="game" fxLayout="row" fxLayoutAlign="start start">
-
-  <img src="assets/backgrounds/stich.png" (click)="stichIt()" width="300px" style="margin-top: 20px; margin-left: 20px;"/>
-
-  <div class="game-screen" fxFlex fxLayout="column" fxLayoutAlign="center center">
-
+<div cdkDropListGroup class="game" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start center">
+  <div class="game-screen" fxFlex fxLayout="column" fxLayout.lt-sm="row" fxLayoutAlign="center center">
+    <div fxLayout="column" class="table-group" fxLayoutAlign="center center">
+    <div style="width:20vh;">
+      <img src="assets/backgrounds/stich.png" (click)="end()" height="100%" width="100%" />
+    </div>
     <div class="body" fxLayout="row" fxAlign="center" fxLayoutAlign="center start">
 
 
       <div fxLayout="column" fxLayoutAlign="start start">
-<div class="body-part head"></div>
-      <div cdkDropList [cdkDropListData]="rightArm" class="body-part arm right" (cdkDropListDropped)="drop($event, 'Arm')">
-          <div class="example-box" *ngFor="let item of rightArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
+        <div class="body-part head"></div>
+        <div cdkDropList [cdkDropListData]="rightArm" class="body-part arm right"
+          (cdkDropListDropped)="drop($event, 'arm')">
+          <div class="arm part-image-container" *ngFor="let item of rightArm" cdkDrag><img height="100%" width="100%"
+              [src]="item.image|safeUrl" /></div>
         </div>
       </div>
       <div fxLayout="column" fxLayoutAlign="start start">
-          <div cdkDropList [cdkDropListData]="head" class="body-part head" (cdkDropListDropped)="drop($event, 'Head')">
-              <div class="example-box" *ngFor="let item of head" cdkDrag><img [src]="item.image|safeUrl"/></div>
-            </div>
-        <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDragEntered)="playAudio()" (cdkDropListDropped)="drop($event, 'Torso')">
-          <div class="example-box" *ngFor="let item of torso" cdkDrag><img [src]="item.image|safeUrl"/></div>
+        <div cdkDropList [cdkDropListData]="head" class="body-part head"
+          (cdkDropListDropped)="drop($event, 'head')">
+          <div class="head part-image-container" *ngFor="let item of head" cdkDrag><img height="100%" width="100%"
+              [src]="item.image|safeUrl" /></div>
         </div>
-        <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDragEntered)="playAudio()" (cdkDropListDropped)="drop($event, 'Leg')">
-            <div class="example-box" *ngFor="let item of legs" cdkDrag><img [src]="item.image|safeUrl"/></div>
-          </div>
+        <div cdkDropList [cdkDropListData]="torso" class="body-part torso" (cdkDragEntered)="playAudio()"
+          (cdkDropListDropped)="drop($event, 'torso')">
+          <div class="torso part-image-container" *ngFor="let item of torso" cdkDrag><img height="100%" width="100%"
+              [src]="item.image|safeUrl" /></div>
+        </div>
+        <div cdkDropList [cdkDropListData]="legs" class="body-part legs" (cdkDragEntered)="playAudio()"
+          (cdkDropListDropped)="drop($event, 'leg')">
+          <div class="legs part-image-container" *ngFor="let item of legs" cdkDrag><img height="100%" width="100%"
+              [src]="item.image|safeUrl" /></div>
+        </div>
       </div>
 
       <div fxLayout="column" fxLayoutAlign="start start">
         <div class="body-part head"></div>
-      <div cdkDropList [cdkDropListData]="leftArm" class="body-part arm left" (cdkDropListDropped)="drop($event, 'Arm')">
-          <div class="example-box" *ngFor="let item of leftArm" cdkDrag><img [src]="item.image|safeUrl"/></div>
+        <div cdkDropList [cdkDropListData]="leftArm" class="body-part arm left"
+          (cdkDropListDropped)="drop($event, 'arm')">
+          <div class="arm part-image-container" *ngFor="let item of leftArm" cdkDrag><img height="100%" width="100%"
+              [src]="item.image|safeUrl" /></div>
         </div>
-        </div>
-
-
-
-
+      </div>
     </div>
-
+  </div>
   </div>
   <div class="parts-menu" fxFlex="20">
     <!-- <button (click)="end()">End</button> -->
-    <div fxLayout="column" fxLayoutAlign="start center">
-        <div cdkDropList [cdkDropListData]="items" (cdkDragEntered)="playAudio()" class="parts-list" cdkDropListSortingDisabled
-          (cdkDropListDropped)="drop($event, 'bin')">
-          <div class="body-part" *ngFor="let item of items" cdkDrag><img [src]="item.image|safeUrl"/></div>
-
-        </div>
+    <div fxLayout="column" fxLayout.lt-sm="row" fxLayoutAlign="start center">
+      <div cdkDropList [cdkDropListData]="items" fxLayout.lt-sm="row" (cdkDragEntered)="playAudio()" class="parts-list"
+        cdkDropListSortingDisabled (cdkDropListDropped)="drop($event, 'bin')">
+        <div class="body-part {{item.type}}" *ngFor="let item of items" cdkDrag><img height="100%" width="100%" [src]="item.image|safeUrl" /></div>
       </div>
+    </div>
   </div>
 </div>
 
 <modal #componentInsideModal>
-  <ng-template #modalHeader><h1 style="color: white;">Movement (WASD)</h1></ng-template>
+  <ng-template #modalHeader>
+    <h1 style="color: white;">Movement (WASD)</h1>
+  </ng-template>
   <ng-template #modalBody>
-    <app-stitch-mini-game (complete)="closeModal()">	</app-stitch-mini-game>
+    <app-stitch-mini-game (complete)="closeModal()"> </app-stitch-mini-game>
   </ng-template>
   <ng-template #modalFooter></ng-template>
 </modal>
