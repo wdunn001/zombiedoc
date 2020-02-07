@@ -2,7 +2,7 @@
 <div fxFlex class="game" fxLayout="column" fxLayoutAlign="start start">
 
   <div class="scene" fxFlex fxLayout="row" fxLayoutAlign="center center">
-    <img height="100%" *ngIf="image" [src]="image | safeUrl" />
+    <img height="100%" *ngIf="image" [src]="image | safeUrl" alt="customer" />
   </div>
   <div class="dialog" fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
     <span>{{dialog[dialogIndex]}}</span>
