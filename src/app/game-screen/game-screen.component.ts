@@ -119,7 +119,6 @@ export class GameScreenComponent implements OnInit {
   }
 
   closeModal() {
-    this.modal.close();
     this.end();
   }
 
@@ -141,7 +140,7 @@ export class GameScreenComponent implements OnInit {
   }
 
   stichIt() {
-    this.modal.open();
+    this.router.navigate(['stich']);
   }
 
   stichAndDrop(event: CdkDragDrop<Part[]>, partNeededString: string) {
